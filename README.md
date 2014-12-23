@@ -5,10 +5,6 @@ common-env [![Build Status](https://drone.io/github.com/FGRibreau/common-env/sta
 
 A little helper I use everywhere for configuration. Environment variables are a really great way to quickly change a program behavior.
 
-<p align="center">
-<img style="width:100%" src="./docs/configuration.gif"/>
-</p>
-
 # npm
 
 ```shell
@@ -44,3 +40,8 @@ t.strictEqual(config.amqp.port, 5672);
 t.strictEqual(config.amqp.connect, true); // converted from env
 t.strictEqual(config.FULL_UPPER_CASE.PORT, 8080);
 ```
+
+
+<p align="center">
+<img style="width:100%" src="./docs/configuration.gif"/>
+</p>
