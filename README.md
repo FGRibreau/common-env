@@ -16,7 +16,8 @@ npm install common-env
 # Usage
 
 ```javascript
-var env = require('common-env');
+var logger = console;
+var env = require('common-env')(logger);
 
 // AMQP_CONNECT=true node test.js
 var config = env.getOrElseAll({
