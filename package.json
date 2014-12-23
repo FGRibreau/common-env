@@ -1,7 +1,7 @@
 {
   "name": "common-env",
   "version": "1.0.0",
-  "description": "A little helper I use everywhere for configuration",
+  "description": "A nice little helper for retrieving configuration from env. vars",
   "main": "lib/common-env.js",
   "directories": {
     "doc": "docs",
