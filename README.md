@@ -45,5 +45,5 @@ t.strictEqual(config.FULL_UPPER_CASE.PORT, 8080);
 
 
 <p align="center">
-<img style="width:100%" src="./docs/configuration.gif"/>
+<img style="width:100%" src="./docs/Thumbs-Up-Gif.gif"/>
 </p>
