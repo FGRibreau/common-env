@@ -19,7 +19,7 @@ npm install common-env
 var logger = console;
 var env = require('common-env')(logger);
 
-// AMQP_CONNECT=true node test.js
+// AMQP\_LOGIN="plop" AMQP_CONNECT=true node test.js
 var config = env.getOrElseAll({
   amqp: {
     login: 'guest',
