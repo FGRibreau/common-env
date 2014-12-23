@@ -1,0 +1,30 @@
+{
+  "name": "common-env",
+  "version": "1.0.0",
+  "description": "A little helper I use everywhere for configuration",
+  "main": "lib/common-env.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FGRibreau/common-env.git"
+  },
+  "author": "Francois-Guillaume Ribreau <npm@fgribreau.com> (http://fgribreau.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FGRibreau/common-env/issues"
+  },
+  "homepage": "https://github.com/FGRibreau/common-env",
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "mocha": "^2.1.0"
+  },
+  "dependencies": {
+    "lodash": "^2.4.1"
+  }
+}
