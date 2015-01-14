@@ -48,3 +48,9 @@ t.strictEqual(config.FULL_UPPER_CASE.PORT, 8080);
 <p align="center">
 <img style="width:100%" src="./docs/Thumbs-Up-Gif.gif"/>
 </p>
+
+# Changelog
+
+## v1.1.0
+
+feat(options): allow user to ask common-env to not display env vars. values, closes #1 asked by @keruspe
