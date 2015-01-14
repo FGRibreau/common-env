@@ -20,13 +20,32 @@ describe('env', function () {
         });
       }
     };
-    env = envFactory(logger);
-    process.env.AMQP_LOGIN = 'plop';
-    process.env.AMQP_CONNECT = 'tRue';
-    process.env.AMQP_CONNECT2 = 'false';
+  });
+
+
+  describe('configured to not display values', function () {
+    beforeEach(function () {
+      env = envFactory(logger, {
+        displayValues: false
+      });
+    });
+
+    it('should not display values in log', function () {
+      process.env.PASSWORD = 'CLEAR_TEXT_PASSWORD';
+      var config = env.getOrElseAll({
+        password: 'default clear text password'
+      });
+      t.notInclude(logger.calls[0], process.env.PASSWORD);
+    });
   });
 
   describe('.getOrElseAll', function () {
+    beforeEach(function () {
+      env = envFactory(logger);
+      process.env.AMQP_LOGIN = 'plop';
+      process.env.AMQP_CONNECT = 'tRue';
+      process.env.AMQP_CONNECT2 = 'false';
+    });
 
     it('should return an object', function () {
       var config = env.getOrElseAll({
@@ -78,10 +97,11 @@ describe('env', function () {
       t.ok(logger.hasENV('PLOP_ROOT_TOKEN'), 'PLOP_ROOT_TOKEN');
       t.ok(logger.hasENV('PLOP_API_ENDPOINT_PORT'), 'PLOP_API_ENDPOINT_PORT');
     });
+
+    afterEach(function () {
+      delete process.env.AMQP_LOGIN;
+    });
   });
 
-  afterEach(function () {
-    delete process.env.AMQP_LOGIN;
-  });
 
 });
