@@ -32,7 +32,7 @@ describe('env', function () {
 
     it('should not display values in log', function () {
       process.env.PASSWORD = 'CLEAR_TEXT_PASSWORD';
-      var config = env.getOrElseAll({
+      env.getOrElseAll({
         password: 'default clear text password'
       });
       t.notInclude(logger.calls[0], process.env.PASSWORD);
