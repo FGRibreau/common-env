@@ -19,14 +19,19 @@ npm install common-env
 var logger = console;
 var env = require('common-env')(logger);
 
-// AMQP_LOGIN="plop" AMQP_CONNECT=true node test.js
+// AMQP_LOGIN=plop AMQP_CONNECT=true AMQP_EXCHANGES[0]_NAME=new_exchange node test.js
 var config = env.getOrElseAll({
   amqp: {
     login: 'guest',
     password: 'guest',
     host: 'localhost',
     port: 5672,
-    connect: false
+    connect: false,
+    exchanges:[{
+      name: 'first_exchange'
+    },{
+      name: 'second_exchange'
+    }]
   },
 
   FULL_UPPER_CASE: {
@@ -41,6 +46,7 @@ var config = env.getOrElseAll({
 t.strictEqual(config.amqp.login, 'plop'); // converted from env
 t.strictEqual(config.amqp.port, 5672);
 t.strictEqual(config.amqp.connect, true); // converted from env
+t.strictEqual(config.amqp.exchanges[0].name, 'new_exchange'); // extracted from env
 t.strictEqual(config.FULL_UPPER_CASE.PORT, 8080);
 ```
 
@@ -50,6 +56,10 @@ t.strictEqual(config.FULL_UPPER_CASE.PORT, 8080);
 </p>
 
 # Changelog
+
+## v1.2.0
+
+feat(env): array support in env variables fixes #4
 
 ## v1.1.0
 

@@ -45,6 +45,7 @@ describe('env', function () {
       process.env.AMQP_LOGIN = 'plop';
       process.env.AMQP_CONNECT = 'tRue';
       process.env.AMQP_CONNECT2 = 'false';
+      process.env['PLOP_API[0]_A'] = 3;
     });
 
     it('should return an object', function () {
@@ -98,8 +99,26 @@ describe('env', function () {
       t.ok(logger.hasENV('PLOP_API_ENDPOINT_PORT'), 'PLOP_API_ENDPOINT_PORT');
     });
 
+    it('should handle array as ENV vars', function () {
+      var config = env.getOrElseAll({
+        plop: {
+          api: [{
+            a: 1,
+          }, {
+            a: 2,
+          }]
+        }
+      });
+      t.strictEqual(config.plop.api[0].a, 3);
+      t.ok(logger.hasENV('PLOP_API[0]_A'), 'PLOP_ROOT_TOKEN');
+      t.ok(logger.hasENV('PLOP_API[1]_A'), 'PLOP_ROOT_TOKEN');
+    });
+
     afterEach(function () {
       delete process.env.AMQP_LOGIN;
+      delete process.env.AMQP_CONNECT;
+      delete process.env.AMQP_CONNECT2;
+      delete process.env['PLOP_API[0]_A'];
     });
   });
 
