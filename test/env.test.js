@@ -103,9 +103,9 @@ describe('env', function () {
       var config = env.getOrElseAll({
         plop: {
           api: [{
-            a: 1,
+            a: 1
           }, {
-            a: 2,
+            a: 2
           }]
         }
       });
