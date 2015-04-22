@@ -45,6 +45,7 @@ describe('env', function () {
       process.env.AMQP_LOGIN = 'plop';
       process.env.AMQP_CONNECT = 'tRue';
       process.env.AMQP_CONNECT2 = 'false';
+      process.env.AMQP_PASSWORD = '';
       process.env['PLOP_API[0]_A'] = 3;
     });
 
@@ -75,6 +76,7 @@ describe('env', function () {
       });
 
       t.strictEqual(config.AMQP.LoGiN, 'plop');
+      t.strictEqual(config.AMQP.PASSWORD, '');
       t.strictEqual(config.AMQP.PORT, 5672);
       t.strictEqual(config.AMQP.PLOP.ok.heyheyhey, true);
       t.strictEqual(config.AMQP.connect, true);
