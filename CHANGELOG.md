@@ -1,5 +1,9 @@
 # Change Log
 
+## [v2.0.0](https://github.com/fgribreau/common-env/tree/v2.0.0) (2015-04-22)
+
+[Full Changelog](https://github.com/fgribreau/common-env/compare/v1.2.1...v2.0.0)
+
 ## [v1.2.1](https://github.com/fgribreau/common-env/tree/v1.2.1) (2015-04-22)
 
 [Full Changelog](https://github.com/fgribreau/common-env/compare/v1.2.0...v1.2.1)
