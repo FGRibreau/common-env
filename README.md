@@ -52,7 +52,7 @@ t.strictEqual(config.FULL_UPPER_CASE.PORT, 8080);
 
 ## Specifying multiple aliases
 
-It sometimes useful to be able to specify aliases, for instance [Clever-cloud](http://clever-cloud.com) or [Heroku](https://heroku.com) exposes their own environment variable names while your application's internal code may not want to rely on them. 
+It's sometimes useful to be able to specify aliases, for instance [Clever-cloud](http://clever-cloud.com) or [Heroku](https://heroku.com) expose their own environment variable names while your application's internal code may not want to rely on them. You may not want to depend on your hosting provider conventions.
 
 Common-env adds a [layer of indirection](http://en.wikipedia.org/wiki/Fundamental_theorem_of_software_engineering) enabling you to specify environment aliases that won't impact your codebase.
 
