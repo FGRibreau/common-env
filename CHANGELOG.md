@@ -1,5 +1,17 @@
 # Change Log
 
+## [v2.1.1](https://github.com/fgribreau/common-env/tree/v2.1.1) (2015-05-18)
+
+[Full Changelog](https://github.com/fgribreau/common-env/compare/v2.1.0...v2.1.1)
+
+## [v2.1.0](https://github.com/fgribreau/common-env/tree/v2.1.0) (2015-05-18)
+
+[Full Changelog](https://github.com/fgribreau/common-env/compare/v2.0.0...v2.1.0)
+
+**Implemented enhancements:**
+
+- Aliases support [\#5](https://github.com/FGRibreau/common-env/issues/5)
+
 ## [v2.0.0](https://github.com/fgribreau/common-env/tree/v2.0.0) (2015-04-22)
 
 [Full Changelog](https://github.com/fgribreau/common-env/compare/v1.2.1...v2.0.0)
