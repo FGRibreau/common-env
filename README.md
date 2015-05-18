@@ -50,6 +50,36 @@ t.strictEqual(config.amqp.exchanges[0].name, 'new_exchange'); // extracted from 
 t.strictEqual(config.FULL_UPPER_CASE.PORT, 8080);
 ```
 
+## Specifying multiple aliases
+
+It sometimes useful to be able to specify aliases, for instance [Clever-cloud](http://clever-cloud.com) or [Heroku](https://heroku.com) exposes their own environment variable names while your application's internal code may not want to rely on them. 
+
+Common-env adds a [layer of indirection](http://en.wikipedia.org/wiki/Fundamental_theorem_of_software_engineering) enabling you to specify environment aliases that won't impact your codebase.
+
+#### Usage
+
+```javascript
+var config = env.getOrElseAll({
+  amqp: {
+    login: {
+      $default: 'guest',
+      $aliases: ['ADDON_RABBITMQ_LOGIN', 'LOCAL_RABBITMQ_LOGIN']
+    },
+    password: 'guest',
+    host: 'localhost',
+    port: 5672
+  },
+});
+
+t.strictEqual(config.amqp.login, 'plop'); // converted from env
+```
+
+#### How common-env resolves `config.amqp.login`
+
+- Common-env will first read `ADDON_RABBITMQ_LOGIN` environment variable, if it exists, its value will be used.
+- If not common-env will read `LOCAL_RABBITMQ_LOGIN`, if it exists, its value will be used.
+- If not common-env will read `AMQP_LOGIN`, if it exists, its value will be used.
+- If not common-env will fallback on `$default` value.
 
 <p align="center">
 <img style="width:100%" src="./docs/Thumbs-Up-Gif.gif"/>

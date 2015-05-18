@@ -116,6 +116,31 @@ describe('env', function () {
       t.ok(logger.hasENV('PLOP_API[1]_A'), 'PLOP_ROOT_TOKEN');
     });
 
+    it('should handle special $aliases and $default object value', function () {
+      var config = env.getOrElseAll({
+        a: {
+          b: [{
+            a: {
+              $default: 'heyheyhey',
+              $aliases: ['BLABLA_BLABLA', 'AMQP_LOGIN']
+            }
+          }, {
+            a: {
+              $default: 'plop2',
+              $aliases: ['BLABLA_BLABLA'] // `BLABLA_BLABLA` does not exist, it should fallback on "plop"
+            }
+          }]
+        },
+        b: {
+          $default: 'heyheyhey',
+          $aliases: ['BLABLA_BLABLA', 'AMQP_LOGIN', 'BLABLA_BLABLA']
+        }
+      });
+      t.strictEqual(config.a.b[0].a, 'plop');
+      t.strictEqual(config.a.b[1].a, 'plop2');
+      t.strictEqual(config.b, 'plop');
+    });
+
     afterEach(function () {
       delete process.env.AMQP_LOGIN;
       delete process.env.AMQP_CONNECT;
