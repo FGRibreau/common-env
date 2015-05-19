@@ -126,7 +126,8 @@ t.strictEqual(config.amqp.login, 'plop'); // converted from env
 Common-env 1.x.x-2.x.x was displaying logs, here is how to retrieve the same behaviour in 3.x.x.
 
 ```javascript
-var config = require('common-env/legacy')().getOrElseAll({
+var logger = console;
+var config = require('common-env/withLogger')(logger).getOrElseAll({
   amqp: {
     login: {
       $default: 'guest',
