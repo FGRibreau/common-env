@@ -10,6 +10,9 @@ describe('env', function () {
   beforeEach(function () {
     logger = {
       calls: [],
+      reset: function () {
+        this.calls = [];
+      },
       info: function () {
         this.calls.push(_.toArray(arguments).join(' '));
         console.log.apply(console, arguments);
@@ -22,12 +25,20 @@ describe('env', function () {
     };
   });
 
+  afterEach(function () {
+    logger.reset();
+  });
+
 
   describe('configured to not display values', function () {
     beforeEach(function () {
       env = envFactory(logger, {
         displayValues: false
       });
+    });
+
+    afterEach(function () {
+      env.reset();
     });
 
     it('should not display values in log', function () {
@@ -136,12 +147,31 @@ describe('env', function () {
           $aliases: ['BLABLA_BLABLA', 'AMQP_LOGIN', 'BLABLA_BLABLA']
         }
       });
-      t.strictEqual(config.a.b[0].a, 'plop');
-      t.strictEqual(config.a.b[1].a, 'plop2');
+
+      t.strictEqual(config.a.b[0].a, 'plop', 'should use AMQP_LOGIN value');
+      t.ok(logger.hasENV('AMQP_LOGIN was defined'), 'AMQP_LOGIN should be printed');
+
       t.strictEqual(config.b, 'plop');
+      t.ok(logger.hasENV('A_B[1]_A was not defined'), 'A_B[1]_A was not defined should be printed');
+    });
+
+    it('should handle special $aliases and $default object value and fallback on default value', function () {
+      var config = env.getOrElseAll({
+        a: {
+          b: [{}, {
+            a: {
+              $default: 'plop2',
+              $aliases: ['BLABLA_BLABLA'] // `BLABLA_BLABLA` does not exist, it should fallback on "plop"
+            }
+          }]
+        }
+      });
+      t.strictEqual(config.a.b[1].a, 'plop2');
+      t.ok(logger.hasENV('A_B[1]_A was not defined'), 'A_B[1]_A was not defined should be printed');
     });
 
     afterEach(function () {
+      env.reset();
       delete process.env.AMQP_LOGIN;
       delete process.env.AMQP_CONNECT;
       delete process.env.AMQP_CONNECT2;
