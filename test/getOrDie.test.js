@@ -1,7 +1,6 @@
 'use strict';
 
 var t = require('chai').assert;
-var _ = require('lodash');
 
 describe('.getOrDie', function () {
   var env;
