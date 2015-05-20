@@ -1,2 +1,2 @@
 'use strict';
-module.exports = require('./withLog');
+module.exports = require('./withLogger');
