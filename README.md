@@ -63,11 +63,9 @@ t.strictEqual(config.FULL_UPPER_CASE.PORT, 8080);
 var config = env
       .on('env:found', function (fullKeyName, value) {
         console.log('[env] %s was defined, using: %s', fullKeyName, String(value));
-        doneAfterTwoCall();
       })
       .on('env:fallback', function (fullKeyName, $default) {
         console.log('[env] %s was not defined, using default: %s', fullKeyName, String($default));
-        doneAfterTwoCall();
       })
       .getOrElseAll({
         node: {
