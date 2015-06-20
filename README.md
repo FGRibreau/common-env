@@ -5,7 +5,15 @@ common-env
 [![Deps](https://david-dm.org/FGRibreau/common-env.png)](https://david-dm.org/FGRibreau/common-env)
 [![Version](http://badge.fury.io/js/common-env.png)](https://david-dm.org/FGRibreau/common-env)
 
-A little helper I use everywhere for configuration. Environment variables are a really great way to quickly change a program behavior.
+A little helper I use everywhere for configuration. [Environment variables](http://blog.honeybadger.io/ruby-guide-environment-variables/) are a really great way to quickly change a program behavior.
+
+# philosophy
+
+Here is my principle:
+
+> "Every constant in code: number, boolean or string* should be configurable"
+
+* besides i18n translation key an things like that of course (well, now that we've got symbols in ES6...)
 
 # npm
 
