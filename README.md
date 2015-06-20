@@ -11,7 +11,7 @@ A little helper I use everywhere for configuration. [Environment variables](http
 
 Here is my principle:
 
-> "Every constant in code: number, boolean or string* should be configurable"
+> Every constant in code: number, boolean or string* should be configurable
 
 \* besides i18n translation key an things like that of course (well, now that we've got symbols in ES6...)
 
