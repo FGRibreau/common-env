@@ -11,7 +11,7 @@ A little helper I use everywhere for configuration. [Environment variables](http
 
 Here is my principle:
 
-![uslide_52](https://cloud.githubusercontent.com/assets/138050/8478738/8eba09f0-20d3-11e5-9fa7-43d952bacb99.png)
+[![uslide_52](https://cloud.githubusercontent.com/assets/138050/8478738/8eba09f0-20d3-11e5-9fa7-43d952bacb99.png)](https://www.uslide.io/presentations/Aw6sX5ug-Tfzw5rNXAmdJg)
 
 [See the talk (in french) about the why [15:23-21:30]](https://www.uslide.io/presentations/Aw6sX5ug-Tfzw5rNXAmdJg)
 
