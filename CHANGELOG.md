@@ -1,5 +1,29 @@
 # Change Log
 
+## [v4.1.0](https://github.com/fgribreau/common-env/tree/v4.1.0) (2015-07-02)
+
+[Full Changelog](https://github.com/fgribreau/common-env/compare/v4.0.1...v4.1.0)
+
+**Closed issues:**
+
+- Support string, boolean and number arrays [\#10](https://github.com/FGRibreau/common-env/issues/10)
+
+## [v4.0.1](https://github.com/fgribreau/common-env/tree/v4.0.1) (2015-05-20)
+
+[Full Changelog](https://github.com/fgribreau/common-env/compare/v4.0.0...v4.0.1)
+
+## [v4.0.0](https://github.com/fgribreau/common-env/tree/v4.0.0) (2015-05-19)
+
+[Full Changelog](https://github.com/fgribreau/common-env/compare/v3.0.1...v4.0.0)
+
+## [v3.0.1](https://github.com/fgribreau/common-env/tree/v3.0.1) (2015-05-19)
+
+[Full Changelog](https://github.com/fgribreau/common-env/compare/v3.0.0...v3.0.1)
+
+## [v3.0.0](https://github.com/fgribreau/common-env/tree/v3.0.0) (2015-05-19)
+
+[Full Changelog](https://github.com/fgribreau/common-env/compare/v2.2.0...v3.0.0)
+
 ## [v2.2.0](https://github.com/fgribreau/common-env/tree/v2.2.0) (2015-05-19)
 
 [Full Changelog](https://github.com/fgribreau/common-env/compare/v2.1.1...v2.2.0)
