@@ -54,7 +54,7 @@ var config = env.getOrElseAll({
   },
   
   facebook:{
-    scope:['user', 'timeline', whatelse'],
+    scope:['user', 'timeline', 'whatelse'],
     backOff: [200, 500, 700]
   },
 
