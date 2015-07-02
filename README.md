@@ -110,7 +110,7 @@ Common-env adds a [layer of indirection](http://en.wikipedia.org/wiki/Fundamenta
 #### Usage
 
 ```javascript
-var env = require('common-env');
+var env = require('common-env')();
 var config = env.getOrElseAll({
   amqp: {
     login: {
