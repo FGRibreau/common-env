@@ -72,8 +72,8 @@ t.strictEqual(config.facebook.scope, ['user', 'timeline']); // extracted and con
 t.strictEqual(config.facebook.backoff, [200, 800]); // extracted and converted from env
 ```
 
-# env.on('env:fallback', f(key, $default))
-# env.on('env:found', f(key, value, $default))
+#### env.on('env:fallback', f(key, $default))
+#### env.on('env:found', f(key, value, $default))
 
 ```javascript
 // let set NODE_ENV was set to "production"
