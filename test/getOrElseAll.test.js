@@ -24,6 +24,8 @@ describe('.getOrElseAll', function () {
     process.env.AMQP_CONNECT = 'tRue';
     process.env.AMQP_CONNECT2 = 'false';
     process.env.AMQP_PASSWORD = '';
+    process.env.A_B_C_DOVERRIDE = '2,3,4';
+    process.env.MY_AWESOME_ARRAY_ALIASE_D = '5,7,8';
     process.env['PLOP_API[0]_A'] = 3;
   });
 
@@ -64,7 +66,32 @@ describe('.getOrElseAll', function () {
         }
       },
 
-      SCOPE: ['a', 'c', 'd'],
+      a: {
+        b: {
+          c: {
+            d: [1, 2, 3],
+            dOverride: [1, 2, 3],
+            dAliases: {
+              $default: [1, 2, 3],
+              $aliases: ['MY_AWESOME_ARRAY_ALIASE_D']
+            },
+
+            e: [true, false, true],
+            eOverride: [false, true, false],
+            eAliases: {
+              $default: [true, false, true],
+              $aliases: ['MY_AWESOME_ARRAY_ALIASE_E']
+            },
+
+            f: ['a', 'c', 'd'],
+            fOverride: ['h', 'e', 'l', 'l', 'o'],
+            fAliases: {
+              $default: ['a', 'c', 'd'],
+              $aliases: ['MY_AWESOME_ARRAY_ALIASE_F']
+            },
+          }
+        }
+      },
 
       c: {
         PORT: 8080,
@@ -82,7 +109,17 @@ describe('.getOrElseAll', function () {
     t.strictEqual(config.AMQP.PLOP.ok.heyheyhey, true);
     t.strictEqual(config.AMQP.connect, true);
     t.strictEqual(config.AMQP.connect2, false);
-    t.strictEqual(config.SCOPE, ['a', 'c', 'd']);
+
+    t.deepEqual(config.a.b.c.f, ['a', 'c', 'd']);
+    t.deepEqual(config.a.b.c.fOverride, 'hello'.split(''));
+
+    t.deepEqual(config.a.b.c.d, [1, 2, 3]);
+    t.deepEqual(config.a.b.c.dOverride, [2, 3, 4]);
+    t.deepEqual(config.a.b.c.dAliases, [5, 7, 8]);
+
+    t.deepEqual(config.a.b.c.e, [true, false, true]);
+    t.deepEqual(config.a.b.c.eOverride, [false, true, false]);
+
     t.strictEqual(config.c.root, '');
   });
 
