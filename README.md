@@ -101,7 +101,7 @@ var config = env
 ```
 
 
-## Specifying multiple aliases
+#### Specifying multiple aliases
 
 It's sometimes useful to be able to specify aliases, for instance [Clever-cloud](http://clever-cloud.com) or [Heroku](https://heroku.com) expose their own environment variable names while your application's internal code may not want to rely on them. You may not want to depend on your hosting provider conventions.
 
@@ -138,7 +138,7 @@ t.strictEqual(config.amqp.login, 'plop'); // converted from env
 </p>
 
 
-# How to retrieve old common-env logging behaviour
+#### How to retrieve old common-env logging behaviour
 
 Common-env 1.x.x-2.x.x was displaying logs, here is how to retrieve the same behaviour in 3.x.x.
 
@@ -158,4 +158,4 @@ var config = require('common-env/withLogger')(logger).getOrElseAll({
 
 ```
 
-# [Changelog](/CHANGELOG.md)
+#### [Changelog](/CHANGELOG.md)
