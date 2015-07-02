@@ -7,31 +7,34 @@ common-env
 
 A little helper I use everywhere for configuration. [Environment variables](http://blog.honeybadger.io/ruby-guide-environment-variables/) are a really great way to quickly change a program behavior.
 
-# philosophy
+# Philosophy
 
 Here is my principle:
 
-> Every constant in code: number, boolean or string* should be configurable
+![uslide_52](https://cloud.githubusercontent.com/assets/138050/8478738/8eba09f0-20d3-11e5-9fa7-43d952bacb99.png)
+
+[See the talk (in french) about the why [15:23-21:30]](https://www.uslide.io/presentations/Aw6sX5ug-Tfzw5rNXAmdJg)
 
 \* besides i18n translation key an things like that of course (well, now that we've got symbols in ES6...)
 
-# npm
+# NPM
 
 ```shell
 npm install common-env
 ```
 
-# env.getOrDie(envVarName)
 
-# env.getOrElse(envVarName, default)
 
-# env.getOrElseAll(object)
+#### env.getOrDie(envVarName)
+
+#### env.getOrElse(envVarName, default)
+
+#### env.getOrElseAll(object)
 
 ```javascript
-var logger = console;
 var env = require('common-env')();
 
-// AMQP_LOGIN=plop AMQP_CONNECT=true AMQP_EXCHANGES[0]_NAME=new_exchange node test.js
+// AMQP_LOGIN=plop AMQP_CONNECT=true AMQP_EXCHANGES[0]_NAME=new_exchange FACEBOOK_SCOPE="user,timeline" FACEBOOK_BACKOFF="200,800" node test.js
 var config = env.getOrElseAll({
   amqp: {
     login: 'guest',
@@ -49,17 +52,24 @@ var config = env.getOrElseAll({
   FULL_UPPER_CASE: {
     PORT: 8080
   },
+  
+  facebook:{
+    scope:['user', 'timeline', whatelse'],
+    backOff: [200, 500, 700]
+  },
 
   MICROSTATS: {
     HASHKEY: 'B:mx:global'
   }
 });
 
-t.strictEqual(config.amqp.login, 'plop'); // converted from env
+t.strictEqual(config.amqp.login, 'plop'); // extracted and converted from env
 t.strictEqual(config.amqp.port, 5672);
-t.strictEqual(config.amqp.connect, true); // converted from env
+t.strictEqual(config.amqp.connect, true); // extracted and converted from env
 t.strictEqual(config.amqp.exchanges[0].name, 'new_exchange'); // extracted from env
 t.strictEqual(config.FULL_UPPER_CASE.PORT, 8080);
+t.strictEqual(config.facebook.scope, ['user', 'timeline']); // extracted and converted from env
+t.strictEqual(config.facebook.backoff, [200, 800]); // extracted and converted from env
 ```
 
 # env.on('env:fallback', f(key, $default))
@@ -100,6 +110,7 @@ Common-env adds a [layer of indirection](http://en.wikipedia.org/wiki/Fundamenta
 #### Usage
 
 ```javascript
+var env = require('common-env');
 var config = env.getOrElseAll({
   amqp: {
     login: {
