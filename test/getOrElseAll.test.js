@@ -6,8 +6,19 @@ var _ = require('lodash');
 
 describe('.getOrElseAll', function () {
   var env;
+  var eventsFound = {};
+  var eventsFallback = {};
+
   beforeEach(function () {
     env = envFactory();
+    env
+      .on(env.EVENT_FOUND, function (fullKeyName, value) {
+        eventsFound[fullKeyName] = value;
+      })
+      .on(env.EVENT_FALLBACK, function (fullKeyName, $default) {
+        eventsFallback[fullKeyName] = $default;
+      });
+    process.env = {};
     process.env.AMQP_LOGIN = 'plop';
     process.env.AMQP_GOOD_PORT = 10;
     process.env.AMQP_CONNECT = 'tRue';
@@ -53,6 +64,8 @@ describe('.getOrElseAll', function () {
         }
       },
 
+      SCOPE: ['a', 'c', 'd'],
+
       c: {
         PORT: 8080,
         root: ''
@@ -69,6 +82,7 @@ describe('.getOrElseAll', function () {
     t.strictEqual(config.AMQP.PLOP.ok.heyheyhey, true);
     t.strictEqual(config.AMQP.connect, true);
     t.strictEqual(config.AMQP.connect2, false);
+    t.strictEqual(config.SCOPE, ['a', 'c', 'd']);
     t.strictEqual(config.c.root, '');
   });
 
@@ -85,8 +99,8 @@ describe('.getOrElseAll', function () {
       }
     });
 
-    // t.ok(logger.hasENV('PLOP_ROOT_TOKEN'), 'PLOP_ROOT_TOKEN');
-    // t.ok(logger.hasENV('PLOP_API_ENDPOINT_PORT'), 'PLOP_API_ENDPOINT_PORT');
+    t.ok(_.has(eventsFallback, 'PLOP_ROOT_TOKEN'), 'PLOP_ROOT_TOKEN');
+    t.ok(_.has(eventsFallback, 'PLOP_API_ENDPOINT_PORT'), 'PLOP_API_ENDPOINT_PORT');
   });
 
 
@@ -101,8 +115,8 @@ describe('.getOrElseAll', function () {
       }
     });
     t.strictEqual(config.plop.api[0].a, 3);
-    // t.ok(logger.hasENV('PLOP_API[0]_A'), 'PLOP_ROOT_TOKEN');
-    // t.ok(logger.hasENV('PLOP_API[1]_A'), 'PLOP_ROOT_TOKEN');
+    t.ok(_.has(eventsFound, 'PLOP_API[0]_A'), 'PLOP_ROOT_TOKEN');
+    t.ok(_.has(eventsFallback, 'PLOP_API[1]_A'), 'PLOP_ROOT_TOKEN');
   });
 
   it('should handle special $aliases and $default object value', function () {
@@ -126,10 +140,10 @@ describe('.getOrElseAll', function () {
       }
     });
     t.strictEqual(config.a.b[0].a, 'plop', 'should use AMQP_LOGIN value');
-    // t.ok(logger.hasENV('AMQP_LOGIN was defined'), 'AMQP_LOGIN should be printed');
+    t.ok(_.has(eventsFound, 'AMQP_LOGIN'), 'AMQP_LOGIN should be printed');
 
     t.strictEqual(config.b, 10);
-    // t.ok(logger.hasENV('AMQP_GOOD_PORT was defined'), 'A_B[1]_A was defined should be printed');
+    t.ok(_.has(eventsFound, 'AMQP_GOOD_PORT'), 'A_B[1]_A was defined should be printed');
   });
 
   it('should handle special $aliases and $default object value and fallback on default value', function () {
@@ -144,7 +158,7 @@ describe('.getOrElseAll', function () {
       }
     });
     t.strictEqual(config.a.b[1].a, 'plop2');
-    // t.ok(logger.hasENV('A_B[1]_A was not defined'), 'A_B[1]_A was not defined should be printed');
+    t.ok(_.has(eventsFallback, 'A_B[1]_A'), 'A_B[1]_A was not defined should be printed');
   });
 
   afterEach(function () {
