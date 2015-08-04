@@ -23,6 +23,24 @@ Here is my principle:
 npm install common-env
 ```
 
+#### Usage
+
+```javascript
+var env = require('common-env')();
+var config = env.getOrElseAll({
+  amqp: {
+    login: {
+      $default: 'guest',
+      $aliases: ['ADDON_RABBITMQ_LOGIN', 'LOCAL_RABBITMQ_LOGIN']
+    },
+    password: 'guest',
+    host: 'localhost',
+    port: 5672
+  }
+});
+
+t.strictEqual(config.amqp.login, 'plop'); // converted from env
+```
 
 
 #### env.getOrDie(envVarName)
@@ -31,10 +49,13 @@ npm install common-env
 
 #### env.getOrElseAll(object)
 
+`getOrElseAll` allows you to specify a configuration object with default values that will be resolved from environment variables.
+
+Let say we start a script with `AMQP_LOGIN=plop AMQP_CONNECT=true AMQP_EXCHANGES[0]_NAME=new_exchange FACEBOOK_SCOPE="user,timeline" FACEBOOK_BACKOFF="200,800" node test.js` with `test.js` defined as follow:
+
 ```javascript
 var env = require('common-env')();
 
-// AMQP_LOGIN=plop AMQP_CONNECT=true AMQP_EXCHANGES[0]_NAME=new_exchange FACEBOOK_SCOPE="user,timeline" FACEBOOK_BACKOFF="200,800" node test.js
 var config = env.getOrElseAll({
   amqp: {
     login: 'guest',
@@ -72,11 +93,17 @@ t.strictEqual(config.facebook.scope, ['user', 'timeline']); // extracted and con
 t.strictEqual(config.facebook.backoff, [200, 800]); // extracted and converted from env
 ```
 
-#### env.on('env:fallback', f(key, $default))
-#### env.on('env:found', f(key, value, $default))
+#### Events
+
+Common-env will emit the following events:
+
+- `env:fallback(key, $default)`: each time a environment key was not found and that common-env fallback on `$default`.
+- `env:found(key, value, $default)`
 
 ```javascript
-// let set NODE_ENV was set to "production"
+// let say NODE_ENV was set to "production"
+
+var env = require('common-env')();
 
 var config = env
       .on('env:found', function (fullKeyName, value) {
@@ -89,17 +116,18 @@ var config = env
         node: {
           env: 'production'
         },
-        a: {
-          b: 'ok'
+        redsmin: {
+          gc: {
+            enabled: false
+          }
         }
       });
 
 // Will print
 
 // [env] NODE_ENV was defined, using: production
-// [env] A_B was not defined, using default: ok
+// [env] REDSMIN_GC_ENABLED was not defined, using default: false
 ```
-
 
 #### Specifying multiple aliases
 
@@ -107,11 +135,67 @@ It's sometimes useful to be able to specify aliases, for instance [Clever-cloud]
 
 Common-env adds a [layer of indirection](http://en.wikipedia.org/wiki/Fundamental_theorem_of_software_engineering) enabling you to specify environment aliases that won't impact your codebase.
 
-#### Usage
+#### How to specify environment variable arrays
+
+Common-env is able to use arrays as key values for instance:
 
 ```javascript
+// test.js
 var env = require('common-env')();
-var config = env.getOrElseAll({
+var config = env.getOrElse({
+  amqp:{
+    hosts:['192.168.1.1', '192.168.1.2']
+  }
+});
+
+console.log(config.amqp.hosts);
+```
+
+Running the above script we can override `amqp.hosts` values with the `AMQP_HOSTS` environment variable we get:
+
+```shell
+$ node test.js
+['192.168.1.1', '192.168.1.2']
+$ AMQP_HOSTS='127.0.0.1' node test.js
+['127.0.0.1']
+$ AMQP_HOSTS='88.23.21.21,88.23.21.22,88.23.21.23' node test.js
+['88.23.21.21', '88.23.21.22', '88.23.21.23']
+```
+
+#### How to specify environment variable arrays using aliases
+
+```javascript
+// test.js
+var env = require('common-env')();
+var config = env.getOrElse({
+  amqp:{
+    hosts:{
+      $default: ['192.168.1.1', '192.168.1.2'],
+      $aliases: ['ADDON_RABBITMQ_HOSTS', 'LOCAL_RABBITMQ_HOSTS']
+    }
+  }
+});
+
+console.log(config.amqp.hosts);
+```
+
+Running the above script we can override `amqp.hosts` values with the `ADDON_RABBITMQ_HOSTS` or `LOCAL_RABBITMQ_HOSTS` environment variable aliases we get:
+
+```shell
+$ node test.js
+['192.168.1.1', '192.168.1.2']
+$ ADDON_RABBITMQ_HOSTS='127.0.0.1' node test.js
+['127.0.0.1']
+$ LOCAL_RABBITMQ_HOSTS='88.23.21.21,88.23.21.22,88.23.21.23' node test.js
+['88.23.21.21', '88.23.21.22', '88.23.21.23']
+```
+
+#### How common-env resolves environment variables
+
+Let's take the following configuration object:
+
+```javascript
+{
   amqp: {
     login: {
       $default: 'guest',
@@ -121,12 +205,10 @@ var config = env.getOrElseAll({
     host: 'localhost',
     port: 5672
   }
-});
-
-t.strictEqual(config.amqp.login, 'plop'); // converted from env
+}
 ```
 
-#### How common-env resolves `config.amqp.login`
+Here is how common-env will resolve `amqp.login`:
 
 - Common-env will first read `ADDON_RABBITMQ_LOGIN` environment variable, if it exists, its value will be used.
 - If not common-env will read `LOCAL_RABBITMQ_LOGIN`, if it exists, its value will be used.
