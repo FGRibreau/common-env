@@ -201,7 +201,7 @@ describe('.getOrElseAll', function () {
   describe('fail-fast behaviour', function () {
     it('should throw an error if $default is not defined and that no environment variables was specified', function () {
       t.throws(function () {
-        var config = env.getOrElseAll({
+        env.getOrElseAll({
           thisIsA: {
             missing: [{
               sadVar: {
