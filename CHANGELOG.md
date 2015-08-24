@@ -1,5 +1,21 @@
 # Change Log
 
+## [v5.0.0](https://github.com/fgribreau/common-env/tree/v5.0.0) (2015-08-24)
+
+[Full Changelog](https://github.com/fgribreau/common-env/compare/v4.1.0...v5.0.0)
+
+**Implemented enhancements:**
+
+- If $default is not specified, the environment variable MUST be defined, if it's not, crash the app \(follow getOrDie behaviour\) [\#13](https://github.com/FGRibreau/common-env/issues/13)
+
+- Rewrite from scratch [\#7](https://github.com/FGRibreau/common-env/issues/7)
+
+**Merged pull requests:**
+
+- Improved documentation on array and array aliases [\#12](https://github.com/FGRibreau/common-env/pull/12) ([FGRibreau](https://github.com/FGRibreau))
+
+- fix\(README\): missing parentheses in example [\#11](https://github.com/FGRibreau/common-env/pull/11) ([Freyskeyd](https://github.com/Freyskeyd))
+
 ## [v4.1.0](https://github.com/fgribreau/common-env/tree/v4.1.0) (2015-07-02)
 
 [Full Changelog](https://github.com/fgribreau/common-env/compare/v4.0.1...v4.1.0)
