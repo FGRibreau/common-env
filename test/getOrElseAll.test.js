@@ -198,6 +198,22 @@ describe('.getOrElseAll', function () {
     t.ok(_.has(eventsFallback, 'A_B[1]_A'), 'A_B[1]_A was not defined should be printed');
   });
 
+  describe('fail-fast behaviour', function () {
+    it('should throw an error if $default is not defined and that no environment variables was specified', function () {
+      t.throws(function () {
+        var config = env.getOrElseAll({
+          thisIsA: {
+            missing: [{
+              sadVar: {
+                $aliases: ['MISSING_VAR_' + (+new Date()), 'MISSING_VAR_2' + (+new Date())]
+              }
+            }]
+          }
+        });
+      }, env.CommonEnvGetOrDieAliasesException);
+    });
+  });
+
   afterEach(function () {
     delete process.env.AMQP_LOGIN;
     delete process.env.AMQP_CONNECT;

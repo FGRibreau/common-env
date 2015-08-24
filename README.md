@@ -190,6 +190,10 @@ $ LOCAL_RABBITMQ_HOSTS='88.23.21.21,88.23.21.22,88.23.21.23' node test.js
 ['88.23.21.21', '88.23.21.22', '88.23.21.23']
 ```
 
+##### fail-fast behaviour
+
+If `$default` is not defined and no environment variables (aliases included) resolve to a value then common-env will throw an error. This error should not be caught in order to make the app crash, following the [fail-fast](https://en.wikipedia.org/wiki/Fail-fast) principle.
+
 #### How common-env resolves environment variables
 
 Let's take the following configuration object:

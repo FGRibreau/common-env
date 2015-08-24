@@ -9,12 +9,9 @@ describe('.getOrDie', function () {
     env = require('..')();
   });
 
-  it('should crash the app if the env. variable did not exist', function (done) {
-    try {
+  it('should crash the app if the env. variable did not exist', function () {
+    t.throws(function () {
       env.getOrDie('AAAAAAAAAAAA');
-    } catch (err) {
-      t.ok(err instanceof env.CommonEnvGetOrDieException);
-      done();
-    }
+    }, env.CommonEnvGetOrDieException);
   });
 });
