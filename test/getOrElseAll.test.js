@@ -200,8 +200,8 @@ describe('.getOrElseAll', function () {
     });
 
     describe('if $type was specified', function () {
-      let env = envFactory();
-      const tests = [
+      var env = envFactory();
+      var tests = [
         {
           converter: env.types.Integer,
           val: '10',
@@ -238,7 +238,7 @@ describe('.getOrElseAll', function () {
           converter: env.types.Array(env.types.String),
           val: 'a,b,c,d',
           converted: ['a', 'b', 'c', 'd']
-        },{
+        }, {
           converter: env.types.Array(env.types.String),
           val: 'a',
           converted: ['a']
@@ -246,7 +246,7 @@ describe('.getOrElseAll', function () {
           converter: env.types.Array(env.types.Integer),
           val: '1,2,3,4',
           converted: [1, 2, 3, 4]
-        },{
+        }, {
           converter: env.types.Array(env.types.Integer),
           val: '1',
           converted: [1]
@@ -260,34 +260,34 @@ describe('.getOrElseAll', function () {
           converted: [true]
         }
       ].map(function (test) {
-        return Object.assign({}, {
+        return _.extend({}, {
           varName: (test.converter._name.toUpperCase() + '_' + test.val).replace('.', '_')
         }, test);
       });
 
       // ensure environment variables does not clash between them
-      it('should have unique vairables names', () => {
+      it('should have unique vairables names', function() {
         t.deepEqual(_.pluck(tests, 'varName'), _.chain(tests).pluck('varName').uniq().value());
       });
 
-      beforeEach(() => {
-        _.forEach(tests, (v) => process.env[v.varName] = v.val);
+      beforeEach(function() {
+        _.forEach(tests, function(v){ process.env[v.varName] = v.val});
       });
 
-      afterEach(() => {
-        _.forEach(tests, (v) => delete process.env[v.varName]);
+      afterEach(function() {
+        _.forEach(tests, function(v){ delete process.env[v.varName]});
       });
 
-      _.forEach(tests, (v) => {
-        describe('converter ' + v.converter._name + ' with value ' + JSON.stringify(v.val), () => {
-          it('should be defined as a function', () => {
+      _.forEach(tests, function(v) {
+        describe('converter ' + v.converter._name + ' with value ' + JSON.stringify(v.val), function() {
+          it('should be defined as a function', function() {
             t.ok(_.isFunction(v.converter), v.converter._name + ' should be a function');
           });
 
           if (v.converted === Error) {
-            it('should throw an error when the converter ' + v.converter._name + ' does not receive a good value (e.g. with ' + v.val + ')', () => {
+            it('should throw an error when the converter ' + v.converter._name + ' does not receive a good value (e.g. with ' + v.val + ')', function() {
 
-              t.throws(() => {
+              t.throws(function() {
                 env.getOrElseAll({
                   a: {
                     $type: v.converter,
@@ -299,7 +299,7 @@ describe('.getOrElseAll', function () {
             return;
           }
 
-          it('should handle ' + v.converter._name + ' converter as $type (e.g. with ' + JSON.stringify(v.val) + ')', () => {
+          it('should handle ' + v.converter._name + ' converter as $type (e.g. with ' + JSON.stringify(v.val) + ')', function() {
             var config = env.getOrElseAll({
               a: {
                 $type: v.converter,
