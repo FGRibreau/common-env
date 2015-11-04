@@ -271,11 +271,11 @@ describe('.getOrElseAll', function () {
       });
 
       beforeEach(function() {
-        _.forEach(tests, function(v){ process.env[v.varName] = v.val});
+        _.forEach(tests, function(v){process.env[v.varName] = v.val;});
       });
 
       afterEach(function() {
-        _.forEach(tests, function(v){ delete process.env[v.varName]});
+        _.forEach(tests, function(v){ delete process.env[v.varName];});
       });
 
       _.forEach(tests, function(v) {
