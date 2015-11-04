@@ -1,6 +1,8 @@
 ## Change Log
 
-### upcoming (2015/11/04 16:56 +00:00)
+### v5.1.0 (2015/11/04 16:58 +00:00)
+- [749bd25](https://github.com/FGRibreau/common-env/commit/749bd255ef71d94e97d58e513b22fc99347ee741) Release v5.1.0. (@FGRibreau)
+- [4e5ad8a](https://github.com/FGRibreau/common-env/commit/4e5ad8abbfc3d9066aa0e3829866f47314dc843d) feat(changelog): updated changelog (@FGRibreau)
 - [d923729](https://github.com/FGRibreau/common-env/commit/d923729f1b086aceaf322c9e4358d3fa32bfcfea) refactor(env): rewrite to support node 0.10+ (@FGRibreau)
 - [87d7018](https://github.com/FGRibreau/common-env/commit/87d7018f86712f84b04e1988a7ed55685acff612) fix(jshint) (@FGRibreau)
 - [88edcbc](https://github.com/FGRibreau/common-env/commit/88edcbcad512c9e6a1eceb84d0866fabe28c9afa) fix(jshint) (@FGRibreau)
