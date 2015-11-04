@@ -156,46 +156,163 @@ describe('.getOrElseAll', function () {
     t.ok(_.has(eventsFallback, 'PLOP_API[1]_A'), 'PLOP_ROOT_TOKEN');
   });
 
-  it('should handle special $aliases and $default object value', function () {
-    var config = env.getOrElseAll({
-      a: {
-        b: [{
-          a: {
-            $default: 'heyheyhey',
-            $aliases: ['BLABLA_BLABLA', 'AMQP_LOGIN']
-          }
+  describe('$aliases handling', function () {
+    it('should handle $default object value', function () {
+      var config = env.getOrElseAll({
+        a: {
+          b: [{
+            a: {
+              $default: 'heyheyhey',
+              $aliases: ['BLABLA_BLABLA', 'AMQP_LOGIN']
+            }
           }, {
-          a: {
-            $default: 'plop2',
-            $aliases: ['BLABLA_BLABLA'] // `BLABLA_BLABLA` does not exist, it should fallback on "plop"
-          }
+            a: {
+              $default: 'plop2',
+              $aliases: ['BLABLA_BLABLA'] // `BLABLA_BLABLA` does not exist, it should fallback on "plop"
+            }
           }]
-      },
-      b: {
-        $default: 10,
-        $aliases: ['BLABLA_BLABLA', 'AMQP_GOOD_PORT', 'BLABLA_BLABLA']
-      }
+        },
+        b: {
+          $default: 10,
+          $aliases: ['BLABLA_BLABLA', 'AMQP_GOOD_PORT', 'BLABLA_BLABLA']
+        }
+      });
+      t.strictEqual(config.a.b[0].a, 'plop', 'should use AMQP_LOGIN value');
+      t.ok(_.has(eventsFound, 'AMQP_LOGIN'), 'AMQP_LOGIN should be printed');
+
+      t.strictEqual(config.b, 10);
+      t.ok(_.has(eventsFound, 'AMQP_GOOD_PORT'), 'A_B[1]_A was defined should be printed');
     });
-    t.strictEqual(config.a.b[0].a, 'plop', 'should use AMQP_LOGIN value');
-    t.ok(_.has(eventsFound, 'AMQP_LOGIN'), 'AMQP_LOGIN should be printed');
 
-    t.strictEqual(config.b, 10);
-    t.ok(_.has(eventsFound, 'AMQP_GOOD_PORT'), 'A_B[1]_A was defined should be printed');
-  });
-
-  it('should handle special $aliases and $default object value and fallback on default value', function () {
-    var config = env.getOrElseAll({
-      a: {
-        b: [{}, {
-          a: {
-            $default: 'plop2',
-            $aliases: ['BLABLA_BLABLA'] // `BLABLA_BLABLA` does not exist, it should fallback on "plop"
-          }
+    it('should handle $default object value and fallback on default value', function () {
+      var config = env.getOrElseAll({
+        a: {
+          b: [{}, {
+            a: {
+              $default: 'plop2',
+              $aliases: ['BLABLA_BLABLA'] // `BLABLA_BLABLA` does not exist, it should fallback on "plop"
+            }
           }]
-      }
+        }
+      });
+      t.strictEqual(config.a.b[1].a, 'plop2');
+      t.ok(_.has(eventsFallback, 'A_B[1]_A'), 'A_B[1]_A was not defined should be printed');
     });
-    t.strictEqual(config.a.b[1].a, 'plop2');
-    t.ok(_.has(eventsFallback, 'A_B[1]_A'), 'A_B[1]_A was not defined should be printed');
+
+    describe('if $type was specified', function () {
+      let env = envFactory();
+      const tests = [
+        {
+          converter: env.types.Integer,
+          val: '10',
+          converted: 10
+        }, {
+          converter: env.types.Integer,
+          val: '102039.23',
+          converted: Error // because the value should be an integer
+        }, {
+          converter: env.types.Boolean,
+          val: 'true',
+          converted: true
+        }, {
+          converter: env.types.Boolean,
+          val: 'false',
+          converted: false
+        }, {
+          converter: env.types.Boolean,
+          val: 'TRUE',
+          converted: true
+        }, {
+          converter: env.types.Boolean,
+          val: 'oskdoskd',
+          converted: Error
+        }, {
+          converter: env.types.String,
+          val: 'string',
+          converted: 'string'
+        }, {
+          converter: env.types.String,
+          val: undefined,
+          converted: Error
+        }, {
+          converter: env.types.Array(env.types.String),
+          val: 'a,b,c,d',
+          converted: ['a', 'b', 'c', 'd']
+        },{
+          converter: env.types.Array(env.types.String),
+          val: 'a',
+          converted: ['a']
+        }, {
+          converter: env.types.Array(env.types.Integer),
+          val: '1,2,3,4',
+          converted: [1, 2, 3, 4]
+        },{
+          converter: env.types.Array(env.types.Integer),
+          val: '1',
+          converted: [1]
+        }, {
+          converter: env.types.Array(env.types.Boolean),
+          val: 'true,false,true,TRUE',
+          converted: [true, false, true, true]
+        }, {
+          converter: env.types.Array(env.types.Boolean),
+          val: 'true',
+          converted: [true]
+        }
+      ].map(function (test) {
+        return Object.assign({}, {
+          varName: (test.converter._name.toUpperCase() + '_' + test.val).replace('.', '_')
+        }, test);
+      });
+
+      // ensure environment variables does not clash between them
+      it('should have unique vairables names', () => {
+        t.deepEqual(_.pluck(tests, 'varName'), _.chain(tests).pluck('varName').uniq().value());
+      })
+
+      beforeEach(() => {
+        _.forEach(tests, (v) => process.env[v.varName] = v.val);
+      });
+
+      afterEach(() => {
+        _.forEach(tests, (v) => delete process.env[v.varName]);
+      });
+
+      _.forEach(tests, (v) => {
+        describe('converter ' + v.converter._name + ' with value ' + JSON.stringify(v.val), () => {
+          it('should be defined as a function', () => {
+            t.ok(_.isFunction(v.converter), v.converter._name + ' should be a function');
+          });
+
+          if (v.converted === Error) {
+            it('should throw an error when the converter ' + v.converter._name + ' does not receive a good value (e.g. with ' + v.val + ')', () => {
+
+              t.throws(() => {
+                env.getOrElseAll({
+                  a: {
+                    $type: v.converter,
+                    $aliases: [v.varName]
+                  }
+                });
+              });
+            });
+            return;
+          }
+
+          it('should handle ' + v.converter._name + ' converter as $type (e.g. with ' + JSON.stringify(v.val) + ')', () => {
+            var config = env.getOrElseAll({
+              a: {
+                $type: v.converter,
+                $aliases: [v.varName]
+              }
+            });
+
+            t.deepEqual(config.a, v.converted);
+          });
+        });
+
+      });
+    });
   });
 
   describe('fail-fast behaviour', function () {
