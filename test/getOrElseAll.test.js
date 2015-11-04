@@ -268,7 +268,7 @@ describe('.getOrElseAll', function () {
       // ensure environment variables does not clash between them
       it('should have unique vairables names', () => {
         t.deepEqual(_.pluck(tests, 'varName'), _.chain(tests).pluck('varName').uniq().value());
-      })
+      });
 
       beforeEach(() => {
         _.forEach(tests, (v) => process.env[v.varName] = v.val);
