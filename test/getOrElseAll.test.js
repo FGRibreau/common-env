@@ -226,13 +226,17 @@ describe('.getOrElseAll', function () {
           converter: env.types.Boolean,
           val:'oskdoskd',
           converted:Error
+        }, {
+          converter: env.types.String,
+          val:'string',
+          converted:'string'
+        },{
+          converter: env.types.String,
+          val:undefined,
+          converted:Error
         },
         // {
-        //   converter: 'STRING',
-        //   env:'string',
-        //   converted:'string'
-        // },{
-        //   converter: 'String',
+        //   converter: env.types.Array(env.types.String),
         //   env:'a,b,c,d'
         //   converted:['a', 'b', 'c', 'd']
         // }
@@ -255,41 +259,39 @@ describe('.getOrElseAll', function () {
         _.forEach(tests, (v) => delete process.env[v.varName]);
       });
 
-
-
       _.forEach(tests, (v) => {
-
-        describe(v.converter.name + ' (e.g. '+v.val+')', () => {
+        describe('converter ' + v.converter.name + ' with value '+ JSON.stringify(v.val), () => {
           it('should be defined as a function', () => {
             t.ok(_.isFunction(v.converter), v.converter.name + ' should be a function');
           });
-        });
 
-        if (v.converted === Error) {
-          it('should throw an error when the converter ' + v.converter.name + ' does not receive a good value (e.g. with ' + v.val + ')', () => {
+          if (v.converted === Error) {
+            it('should throw an error when the converter ' + v.converter.name + ' does not receive a good value (e.g. with ' + v.val + ')', () => {
 
-            t.throws(() => {
-              env.getOrElseAll({
-                a: {
-                  $type: v.converter,
-                  $aliases: [v.varName]
-                }
+              t.throws(() => {
+                env.getOrElseAll({
+                  a: {
+                    $type: v.converter,
+                    $aliases: [v.varName]
+                  }
+                });
               });
             });
-          });
-          return;
-        }
+            return;
+          }
 
-        it('should handle ' + v.converter.name + ' converter as $type (e.g. with ' + JSON.stringify(v.val) + ')', () => {
-          var config = env.getOrElseAll({
-            a: {
-              $type: v.converter,
-              $aliases: [v.varName]
-            }
-          });
+          it('should handle ' + v.converter.name + ' converter as $type (e.g. with ' + JSON.stringify(v.val) + ')', () => {
+            var config = env.getOrElseAll({
+              a: {
+                $type: v.converter,
+                $aliases: [v.varName]
+              }
+            });
 
-          t.strictEqual(config.a, v.converted);
+            t.strictEqual(config.a, v.converted);
+          });
         });
+
       });
     });
   });
