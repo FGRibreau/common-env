@@ -73,7 +73,7 @@ var config = env.getOrElseAll({
   FULL_UPPER_CASE: {
     PORT: 8080
   },
-  
+
   facebook:{
     scope:['user', 'timeline', 'whatelse'],
     backOff: [200, 500, 700]
@@ -162,7 +162,7 @@ $ AMQP_HOSTS='88.23.21.21,88.23.21.22,88.23.21.23' node test.js
 ['88.23.21.21', '88.23.21.22', '88.23.21.23']
 ```
 
-#### How to specify environment variable arrays using aliases
+#### How to specify environment variable arrays using $aliases
 
 ```javascript
 // test.js
@@ -193,6 +193,44 @@ $ LOCAL_RABBITMQ_HOSTS='88.23.21.21,88.23.21.22,88.23.21.23' node test.js
 ##### fail-fast behaviour
 
 If `$default` is not defined and no environment variables (aliases included) resolve to a value then common-env will throw an error. This error should not be caught in order to make the app crash, following the [fail-fast](https://en.wikipedia.org/wiki/Fail-fast) principle.
+
+### How to define type converters
+
+Since common-env uses `$default` to infer the environment variable type, if `$default` is not available common-env won't be able to use the right type, for instance:
+
+```js
+// ...
+var config = env.getOrElseAll({
+ redis:{
+   hosts: {
+      $aliases: ['REDIS_ADDON_PORTS']
+   }
+ }
+});
+```
+
+`config.redis.ports` should be **an array of number** but instead common-env will fallback to a string because it can't infer what should be the type of `config.redis.ports`. That's where `$type` is handy if gives you a way to tell common-env how it should convert the value:
+
+```js
+// ...
+var config = env.getOrElseAll({
+ redis:{
+   hosts: {
+      $aliases: ['REDIS_ADDON_PORTS'],
+      $type: env.types.Array(env.types.Number)
+   }
+ }
+```
+
+As of today, currently supported types are:
+
+- `env.types.String`
+- `env.types.Integer`
+- `env.types.Boolean`
+- `env.types.Array(env.types.String)`
+- `env.types.Array(env.types.Integer)`
+- `env.types.Array(env.types.Boolean)`
+
 
 #### How common-env resolves environment variables
 
