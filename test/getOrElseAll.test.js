@@ -210,39 +210,58 @@ describe('.getOrElseAll', function () {
           converter: env.types.Integer,
           val: '102039.23',
           converted: Error // because the value should be an integer
-        },{
+        }, {
           converter: env.types.Boolean,
-          val:'true',
-          converted:true
-        },{
+          val: 'true',
+          converted: true
+        }, {
           converter: env.types.Boolean,
-          val:'false',
-          converted:false
-        },{
+          val: 'false',
+          converted: false
+        }, {
           converter: env.types.Boolean,
-          val:'TRUE',
-          converted:true
-        },{
+          val: 'TRUE',
+          converted: true
+        }, {
           converter: env.types.Boolean,
-          val:'oskdoskd',
-          converted:Error
+          val: 'oskdoskd',
+          converted: Error
         }, {
           converter: env.types.String,
-          val:'string',
-          converted:'string'
-        },{
+          val: 'string',
+          converted: 'string'
+        }, {
           converter: env.types.String,
-          val:undefined,
-          converted:Error
-        },
-        // {
-        //   converter: env.types.Array(env.types.String),
-        //   env:'a,b,c,d'
-        //   converted:['a', 'b', 'c', 'd']
-        // }
+          val: undefined,
+          converted: Error
+        }, {
+          converter: env.types.Array(env.types.String),
+          val: 'a,b,c,d',
+          converted: ['a', 'b', 'c', 'd']
+        },{
+          converter: env.types.Array(env.types.String),
+          val: 'a',
+          converted: ['a']
+        }, {
+          converter: env.types.Array(env.types.Integer),
+          val: '1,2,3,4',
+          converted: [1, 2, 3, 4]
+        },{
+          converter: env.types.Array(env.types.Integer),
+          val: '1',
+          converted: [1]
+        }, {
+          converter: env.types.Array(env.types.Boolean),
+          val: 'true,false,true,TRUE',
+          converted: [true, false, true, true]
+        }, {
+          converter: env.types.Array(env.types.Boolean),
+          val: 'true',
+          converted: [true]
+        }
       ].map(function (test) {
         return Object.assign({}, {
-          varName: (test.converter.name.toUpperCase() + '_' + test.val).replace('.', '_')
+          varName: (test.converter._name.toUpperCase() + '_' + test.val).replace('.', '_')
         }, test);
       });
 
@@ -260,13 +279,13 @@ describe('.getOrElseAll', function () {
       });
 
       _.forEach(tests, (v) => {
-        describe('converter ' + v.converter.name + ' with value '+ JSON.stringify(v.val), () => {
+        describe('converter ' + v.converter._name + ' with value ' + JSON.stringify(v.val), () => {
           it('should be defined as a function', () => {
-            t.ok(_.isFunction(v.converter), v.converter.name + ' should be a function');
+            t.ok(_.isFunction(v.converter), v.converter._name + ' should be a function');
           });
 
           if (v.converted === Error) {
-            it('should throw an error when the converter ' + v.converter.name + ' does not receive a good value (e.g. with ' + v.val + ')', () => {
+            it('should throw an error when the converter ' + v.converter._name + ' does not receive a good value (e.g. with ' + v.val + ')', () => {
 
               t.throws(() => {
                 env.getOrElseAll({
@@ -280,7 +299,7 @@ describe('.getOrElseAll', function () {
             return;
           }
 
-          it('should handle ' + v.converter.name + ' converter as $type (e.g. with ' + JSON.stringify(v.val) + ')', () => {
+          it('should handle ' + v.converter._name + ' converter as $type (e.g. with ' + JSON.stringify(v.val) + ')', () => {
             var config = env.getOrElseAll({
               a: {
                 $type: v.converter,
@@ -288,7 +307,7 @@ describe('.getOrElseAll', function () {
               }
             });
 
-            t.strictEqual(config.a, v.converted);
+            t.deepEqual(config.a, v.converted);
           });
         });
 
