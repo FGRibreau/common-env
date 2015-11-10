@@ -1,5 +1,14 @@
 ## Change Log
 
+### v5.2.0 (2015/11/10 14:47 +00:00)
+- [238ff9e](https://github.com/FGRibreau/common-env/commit/238ff9e73603c51848fdcd245f4fb15689db3c13) Release v5.2.0. (@FGRibreau)
+- [#16](https://github.com/fgribreau/common-env/pull/16) Merge pull request #16 from jcare44/patch-1 (@jcare44)
+- [f1d68e5](https://github.com/FGRibreau/common-env/commit/f1d68e55679d2a6a101c3a11b7796dec9934f4ed) doc(README) (@jcare44)
+- [b245c8c](https://github.com/FGRibreau/common-env/commit/b245c8c887ea98a2040fdaf32862144e89242a5c) fix($type whithout $aliases) & add tests (@jcare44)
+- [855221f](https://github.com/FGRibreau/common-env/commit/855221f2efdd2ec8b0d3b64ea80145ac69d71eb2) fix(env) allow the use of $type without $aliases (@jcare44)
+- [452c1d5](https://github.com/FGRibreau/common-env/commit/452c1d5592ae70e211d6e10139a81858621ee693) fix(jshint) (@FGRibreau)
+- [3a8694c](https://github.com/FGRibreau/common-env/commit/3a8694cddbaae84eb1e331e282b582372e2c51f4) docs(changelog): v5.1.0 (@FGRibreau)
+
 ### v5.1.0 (2015/11/04 16:58 +00:00)
 - [749bd25](https://github.com/FGRibreau/common-env/commit/749bd255ef71d94e97d58e513b22fc99347ee741) Release v5.1.0. (@FGRibreau)
 - [4e5ad8a](https://github.com/FGRibreau/common-env/commit/4e5ad8abbfc3d9066aa0e3829866f47314dc843d) feat(changelog): updated changelog (@FGRibreau)
