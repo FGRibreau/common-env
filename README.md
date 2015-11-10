@@ -1,6 +1,7 @@
 common-env
 ==========
 
+[![Circle CI](https://circleci.com/gh/FGRibreau/common-env.svg?style=svg)](https://circleci.com/gh/FGRibreau/common-env)
 [![Build Status](https://drone.io/github.com/FGRibreau/common-env/status.png)](https://drone.io/github.com/FGRibreau/common-env/latest)
 [![Deps](https://david-dm.org/FGRibreau/common-env.png)](https://david-dm.org/FGRibreau/common-env)
 [![Version](http://badge.fury.io/js/common-env.png)](https://david-dm.org/FGRibreau/common-env) [![Downloads](http://img.shields.io/npm/dm/common-env.svg)](https://www.npmjs.com/package/common-env)
