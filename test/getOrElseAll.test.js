@@ -309,6 +309,20 @@ describe('.getOrElseAll', function () {
 
             t.deepEqual(config.a, v.converted);
           });
+
+          it('should handle ' + v.converter._name + ' converter as $type (e.g. with ' + JSON.stringify(v.val) + ') whithout $aliases', function() {
+            process.env.B = v.val;
+
+            var config = env.getOrElseAll({
+              b: {
+                $type: v.converter
+              }
+            });
+
+            delete process.env.B;
+
+            t.deepEqual(config.b, v.converted);
+          });
         });
 
       });
