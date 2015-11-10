@@ -222,6 +222,8 @@ var config = env.getOrElseAll({
  }
 ```
 
+*Note that `$aliases` isn't mandatory with `$type`.*
+
 As of today, currently supported types are:
 
 - `env.types.String`
