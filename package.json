@@ -17,7 +17,8 @@
   "scripts": {
     "test": "mocha test",
     "test-watch": "mocha -w test",
-    "changelog": "github-changes --o fgribreau --r common-env --token $CHANGELOG_GITHUB_TOKEN -f CHANGELOG.md"
+    "check-build": "check-build",
+    "changelog": "github-changes --o $(node -p 'process.env.npm_package_repository_url.split(\"/\")[3];') --r $(node -p 'a=process.env.npm_package_repository_url.split(\"/\");a[a.length-1].split(\".\")[0]') --token $CHANGELOG_GITHUB_TOKEN_FG -f CHANGELOG.md"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,7 @@
   "homepage": "https://github.com/FGRibreau/common-env",
   "devDependencies": {
     "chai": "^1.10.0",
+    "check-build": "^2.3.0",
     "github-changes": "^1.0.0",
     "mocha": "^2.1.0"
   },
