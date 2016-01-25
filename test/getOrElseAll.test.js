@@ -267,7 +267,7 @@ describe('.getOrElseAll', function () {
 
       // ensure environment variables does not clash between them
       it('should have unique vairables names', function() {
-        t.deepEqual(_.pluck(tests, 'varName'), _.chain(tests).pluck('varName').uniq().value());
+        t.deepEqual(_.map(tests, 'varName'), _.chain(tests).map('varName').uniq().value());
       });
 
       beforeEach(function() {
