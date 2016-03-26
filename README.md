@@ -286,3 +286,8 @@ var config = require('common-env/withLogger')(logger).getOrElseAll({
 ```
 
 #### [Changelog](/CHANGELOG.md)
+
+## Donate
+
+I maintain this project in my free time, if it helped you please support my work [via paypal](https://paypal.me/fgribreau) or [Bitcoins](https://www.coinbase.com/fgribreau), thanks a lot!
+
