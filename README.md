@@ -107,10 +107,12 @@ Common-env will emit the following events:
 var env = require('common-env')();
 
 var config = env
-      .on('env:found', function (fullKeyName, value) {
+      .on('env:found', function (fullKeyName, value, $secure) {
+        value = $secure ? '***' : value;
         console.log('[env] %s was defined, using: %s', fullKeyName, String(value));
       })
-      .on('env:fallback', function (fullKeyName, $default) {
+      .on('env:fallback', function (fullKeyName, $default, $secure) {
+        $default = $secure ? '***' : $default;
         console.log('[env] %s was not defined, using default: %s', fullKeyName, String($default));
       })
       .getOrElseAll({
@@ -285,9 +287,26 @@ var config = require('common-env/withLogger')(logger).getOrElseAll({
 
 ```
 
+#### How to set silent (or secure) values in output logger
+
+```javascript
+var logger = console;
+var config = require('common-env/withLogger')(logger).getOrElseAll({
+  amqp: {
+    password: {
+      $default: 'guest',
+      $secure: true
+    }
+  }
+});
+
+// Console output:
+// [env] AMQP_PASSWORD was not defined, using default: ***"
+// [env] AMQP_PASSWORD was defined, using: ***"
+```
+
 #### [Changelog](/CHANGELOG.md)
 
 ## Donate
 
 I maintain this project in my free time, if it helped you please support my work [via paypal](https://paypal.me/fgribreau) or [Bitcoins](https://www.coinbase.com/fgribreau), thanks a lot!
-
