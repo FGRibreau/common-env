@@ -231,9 +231,11 @@ As of today, currently supported types are:
 
 - `env.types.String`
 - `env.types.Integer`
+- `env.types.Float`
 - `env.types.Boolean`
 - `env.types.Array(env.types.String)`
 - `env.types.Array(env.types.Integer)`
+- `env.types.Array(env.types.Float)`
 - `env.types.Array(env.types.Boolean)`
 
 

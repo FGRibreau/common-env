@@ -211,6 +211,18 @@ describe('.getOrElseAll', function () {
           val: '102039.23',
           converted: Error // because the value should be an integer
         }, {
+          converter: env.types.Float,
+          val: '10',
+          converted: 10
+        }, {
+          converter: env.types.Float,
+          val: '1.1',
+          converted: 1.1
+        }, {
+          converter: env.types.Float,
+          val: '102039.23',
+          converted: 102039.23
+        }, {
           converter: env.types.Boolean,
           val: 'true',
           converted: true
@@ -250,6 +262,14 @@ describe('.getOrElseAll', function () {
           converter: env.types.Array(env.types.Integer),
           val: '1',
           converted: [1]
+        }, {
+          converter: env.types.Array(env.types.Float),
+          val: '1,2.2,3,4.4',
+          converted: [1, 2.2, 3, 4.4]
+        }, {
+          converter: env.types.Array(env.types.Float),
+          val: '1.1',
+          converted: [1.1]
         }, {
           converter: env.types.Array(env.types.Boolean),
           val: 'true,false,true,TRUE',
