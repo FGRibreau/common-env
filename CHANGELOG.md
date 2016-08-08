@@ -1,5 +1,10 @@
 ## Change Log
 
+### v5.4.0 (2016/08/08 13:15 +00:00)
+- [02da1ac](https://github.com/FGRibreau/common-env/commit/02da1acc5bcbe8c91178fc5dac4a455d54654754) Release v5.4.0. (@FGRibreau)
+- [fd5d957](https://github.com/FGRibreau/common-env/commit/fd5d95798c1c2c434b20567fb83fd8d29f01aa75) feat(types): support for float (@FGRibreau)
+- [06756d9](https://github.com/FGRibreau/common-env/commit/06756d961835616db5d35731957c52541314feca) docs(CHANGELOG) (@FGRibreau)
+
 ### v5.3.0 (2016/07/29 17:27 +00:00)
 - [b09d048](https://github.com/FGRibreau/common-env/commit/b09d04802a2a952a4b72883cdc7a4a172548703c) Release v5.3.0. (@FGRibreau)
 - [#18](https://github.com/FGRibreau/common-env/pull/18) Merge pull request #18 from JulienBreux/feature/secure-output-log (@JulienBreux)
