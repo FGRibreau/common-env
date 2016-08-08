@@ -1,10 +1,9 @@
 common-env
 ==========
 
-[![Circle CI](https://circleci.com/gh/FGRibreau/common-env.svg?style=svg)](https://circleci.com/gh/FGRibreau/common-env)
-[![Build Status](https://drone.io/github.com/FGRibreau/common-env/status.png)](https://drone.io/github.com/FGRibreau/common-env/latest)
-[![Deps](https://david-dm.org/FGRibreau/common-env.png)](https://david-dm.org/FGRibreau/common-env)
-[![Version](http://badge.fury.io/js/common-env.png)](https://david-dm.org/FGRibreau/common-env) [![Downloads](http://img.shields.io/npm/dm/common-env.svg)](https://www.npmjs.com/package/common-env) ![extra](https://img.shields.io/badge/actively%20maintained-yes-ff69b4.svg)
+[![Build Status](https://img.shields.io/circleci/project/FGRibreau/common-env.svg)](https://circleci.com/gh/FGRibreau/common-env/)
+[![Deps](https://img.shields.io/david/FGRibreau/common-env.svg)](https://david-dm.org/FGRibreau/common-env)
+[![NPM version](https://img.shields.io/npm/v/common-env.svg)](http://badge.fury.io/js/common-env)  [![Downloads](http://img.shields.io/npm/dm/common-env.svg)](https://www.npmjs.com/package/common-env) ![extra](https://img.shields.io/badge/actively%20maintained-yes-ff69b4.svg)
 
 A little helper I use everywhere for configuration. [Environment variables](http://blog.honeybadger.io/ruby-guide-environment-variables/) are a really great way to quickly change a program behavior.
 
