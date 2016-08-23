@@ -137,21 +137,47 @@ It's sometimes useful to be able to specify aliases, for instance [Clever-cloud]
 
 Common-env adds a [layer of indirection](http://en.wikipedia.org/wiki/Fundamental_theorem_of_software_engineering) enabling you to specify environment aliases that won't impact your codebase.
 
-#### How to gather environment variable arrays
+#### How to handle environment variable arrays
 
-Since **v6**, common-env is able to read arrays from environment variables. First don't forget that **environment variables do not support arrays**, thus `MY_ENV_VAR[0]_A` is not a valid varable, as well as `MY_ENV_VAR$0$_A` and so on. In fact, the only supported characters are `[0-9_]`. Since we wanted a lot array support for common-env [we had to find a work-around](https://github.com/FGRibreau/common-env/issues/6).
+Since **v6**, common-env is able to read arrays from environment variables. Before going further, please don't forget that **environment variables do not support arrays**, thus `MY_ENV_VAR[0]_A` is not a valid environment variable name, as well as `MY_ENV_VAR$0$_A` and so on. In fact, the only supported characters are `[0-9_]`. But since we wanted **a lot** array support [we had to find a work-around](https://github.com/FGRibreau/common-env/issues/6).
 
-And that's what we did:
+And here is what we did:
 
 | Configuration key path | Generated environment key |
 |---|---|
 | amqp.exchanges[0].name | AMQP_EXCHANGES__0_NAME |
 | amqp.exchanges[10].name | AMQP_EXCHANGES__10_NAME |
 
+As you can see, we a replacing `[0]`, with `__0` and thus common-env is compliant with the limited character support while providing an awesome abstraction for configuration through environment variables.
 
-Note that:
+Note that **only the first element** of the array will be used as a **description** for every other element of the array. So in the following code:
 
-  - only the first element of the array will be used as a description for every other element of the array. that's really important!
+```
+const config = env.getOrElseAll({
+  mysql: {
+    hosts: [{
+      host: '127.0.0.1',
+      port: 3306
+      }, {
+      auth: {
+        $type: env.types.String
+        $secure: true
+      }
+    }]
+  }
+});
+```
+
+only the first object
+
+`{
+  host: '127.0.0.1',
+  port: 3306
+}`
+
+will be used as a *type* template for every defined elements.
+
+One last thing, common-env is smart enough to build plain arrays (not sparse), so if you defined `MYSQL_HOSTS__10_PORT=3310`, `config.mysql.hosts` will contains **10 objects** as you thought it would.
 
 #### How to specify environment variable arrays
 
