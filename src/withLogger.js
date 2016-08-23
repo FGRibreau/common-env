@@ -3,7 +3,6 @@
 var envFactory = require('..');
 
 module.exports = function (logger) {
-  logger = logger || console;
   var env = envFactory();
 
   env.on(env.EVENT_FOUND, function (fullKeyName, value, $secure) {

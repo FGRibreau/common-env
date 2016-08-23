@@ -32,13 +32,18 @@ describe('withLogger', function() {
       password: {
         $default: 'iAmUseless',
         $secure: true
+      },
+      password2: {
+        $default: 'iAmUseless',
+        $secure: true
       }
     });
     t.strictEqual(config.username, process.env.USERNAME);
     t.strictEqual(config.password, process.env.PASSWORD);
     t.deepEqual(logger.calls, [
       ["[env] %s was defined, using: %s", "USERNAME", process.env.USERNAME],
-      ["[env] %s was defined, using: %s", "PASSWORD", "***"]
+      ["[env] %s was defined, using: %s", "PASSWORD", "***"],
+      ["[env] %s was not defined, using default: %s", "PASSWORD2", "***"]
     ]);
   });
 
