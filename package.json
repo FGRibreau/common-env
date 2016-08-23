@@ -27,8 +27,7 @@
     "send-coverage": "cat ./coverage/lcov.info | coveralls",
     "check-build": "check-build",
     "update": "updtr",
-    "changelog-init": "conventional-changelog -i CHANGELOG.md -s -r 0",
-    "changelog": "conventional-changelog -i CHANGELOG.md -s",
+    "changelog": "conventional-changelog -i CHANGELOG.md -s -r 0",
     "changelog-git": "npm run changelog && git add CHANGELOG.md && git commit -m 'docs(changelog): updated' && git push origin master"
   },
   "repository": {
