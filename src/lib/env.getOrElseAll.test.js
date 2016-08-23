@@ -250,8 +250,8 @@ describe('.getOrElseAll', function() {
     });
 
     describe('if $type was specified', function() {
-      var env = envFactory();
-      var tests = [
+      const env = envFactory();
+      const tests = [
         {
           converter: env.types.Integer,
           val: '10',
@@ -272,6 +272,10 @@ describe('.getOrElseAll', function() {
           converter: env.types.Float,
           val: '102039.23',
           converted: 102039.23
+        }, {
+          converter: env.types.Float,
+          val: 'aaa',
+          converted: Error
         }, {
           converter: env.types.Boolean,
           val: 'true',
@@ -312,6 +316,10 @@ describe('.getOrElseAll', function() {
           converter: env.types.Array(env.types.Integer),
           val: '1',
           converted: [1]
+        },{
+          converter: env.types.Array(env.types.Integer),
+          val: 'a,a',
+          converted: Error
         }, {
           converter: env.types.Array(env.types.Float),
           val: '1,2.2,3,4.4',
@@ -399,6 +407,17 @@ describe('.getOrElseAll', function() {
           });
         });
 
+      });
+
+
+      it('throws an error if `itemConverter` was not a function', () => {
+        t.throw(() => {
+          env.getOrElseAll({
+            a:{
+              $type: env.types.Array('plop')
+            }
+          })
+        });
       });
     });
   });

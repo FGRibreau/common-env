@@ -35,6 +35,15 @@
   "bugs": {
     "url": "https://github.com/FGRibreau/common-env/issues"
   },
+  "nyc": {
+    "exclude": [
+      "node_modules",
+      "dist",
+      "coverage",
+      "webpack.config.js",
+      "**/**.test.js"
+    ]
+  },
   "homepage": "https://github.com/FGRibreau/common-env",
   "devDependencies": {
     "chai": "^3.5.0",
