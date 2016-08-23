@@ -1,3 +1,27 @@
+<a name="6.0.0"></a>
+# 6.0.0 (2016-08-23)
+
+* chore(dir) ([0455296](https://github.com/FGRibreau/common-env/commit/0455296))
+* docs(changelog) ([ffc13c2](https://github.com/FGRibreau/common-env/commit/ffc13c2))
+* docs(readme) ([31ba0e8](https://github.com/FGRibreau/common-env/commit/31ba0e8))
+* docs(README) ([f60f093](https://github.com/FGRibreau/common-env/commit/f60f093))
+* docs(README) ([8a4c107](https://github.com/FGRibreau/common-env/commit/8a4c107))
+* feat(array-support) ([622cc8b](https://github.com/FGRibreau/common-env/commit/622cc8b))
+* feat(ci) ([5ccbfcd](https://github.com/FGRibreau/common-env/commit/5ccbfcd))
+* feat(package) ([a697afd](https://github.com/FGRibreau/common-env/commit/a697afd))
+* fix(package) ([7995532](https://github.com/FGRibreau/common-env/commit/7995532))
+* fix(package) ([af1a2b4](https://github.com/FGRibreau/common-env/commit/af1a2b4))
+* Release v6.0.0. ([18bd99a](https://github.com/FGRibreau/common-env/commit/18bd99a))
+* Update README.md ([5c55547](https://github.com/FGRibreau/common-env/commit/5c55547))
+* docs(README): array support, fixes #6 ([4b4f1d6](https://github.com/FGRibreau/common-env/commit/4b4f1d6)), closes [#6](https://github.com/FGRibreau/common-env/issues/6)
+* fix(env): added deprecation notice for $aliases ([6e1ec0a](https://github.com/FGRibreau/common-env/commit/6e1ec0a))
+* fix(tests): fix coverage to 100% ([6fd2f3a](https://github.com/FGRibreau/common-env/commit/6fd2f3a))
+* fix(tests): more tests, full coverage, more fail-fast errors ([605067c](https://github.com/FGRibreau/common-env/commit/605067c))
+* feat(test): more tests ([2e3b96b](https://github.com/FGRibreau/common-env/commit/2e3b96b))
+* feat(updtr): use updtr ([54344f8](https://github.com/FGRibreau/common-env/commit/54344f8))
+
+
+
 <a name="5.4.0"></a>
 # 5.4.0 (2016-08-08)
 
