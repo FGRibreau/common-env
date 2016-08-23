@@ -1,143 +1,209 @@
-## Change Log
+<a name="5.4.0"></a>
+# 5.4.0 (2016-08-08)
 
-### v5.4.0 (2016/08/08 13:15 +00:00)
-- [02da1ac](https://github.com/FGRibreau/common-env/commit/02da1acc5bcbe8c91178fc5dac4a455d54654754) Release v5.4.0. (@FGRibreau)
-- [fd5d957](https://github.com/FGRibreau/common-env/commit/fd5d95798c1c2c434b20567fb83fd8d29f01aa75) feat(types): support for float (@FGRibreau)
-- [06756d9](https://github.com/FGRibreau/common-env/commit/06756d961835616db5d35731957c52541314feca) docs(CHANGELOG) (@FGRibreau)
+* docs(CHANGELOG) ([06756d9](https://github.com/FGRibreau/common-env/commit/06756d9))
+* Release v5.4.0. ([02da1ac](https://github.com/FGRibreau/common-env/commit/02da1ac))
+* feat(types): support for float ([fd5d957](https://github.com/FGRibreau/common-env/commit/fd5d957))
 
-### v5.3.0 (2016/07/29 17:27 +00:00)
-- [b09d048](https://github.com/FGRibreau/common-env/commit/b09d04802a2a952a4b72883cdc7a4a172548703c) Release v5.3.0. (@FGRibreau)
-- [#18](https://github.com/FGRibreau/common-env/pull/18) Merge pull request #18 from JulienBreux/feature/secure-output-log (@JulienBreux)
-- [4c89ff6](https://github.com/FGRibreau/common-env/commit/4c89ff6eeb3737fe59a9d449bcd64dd5931c765e) Add  config option key (@JulienBreux)
-- [00ff7f6](https://github.com/FGRibreau/common-env/commit/00ff7f6b46939ab8d259deb3d380457793796905) Update README.md (@FGRibreau)
 
-### v5.2.1 (2016/01/25 08:27 +00:00)
-- [63d2ce9](https://github.com/FGRibreau/common-env/commit/63d2ce93d30c326dc1daf622fd21db4937b13d7b) Release v5.2.1. (@FGRibreau)
-- [48903d1](https://github.com/FGRibreau/common-env/commit/48903d12f57cb7761953e7665882ffc9bba68a76) fix(deps): upgraded lodash to 4.0.0 (@FGRibreau)
-- [e224563](https://github.com/FGRibreau/common-env/commit/e2245638f2dd18c0ed67929e64f34ff34faedfe8) Update README.md (@FGRibreau)
-- [849cae2](https://github.com/FGRibreau/common-env/commit/849cae233de7dc8e45c3ea76bc11670d522523a7) fix(lib): added use-strict header (@FGRibreau)
-- [48f7939](https://github.com/FGRibreau/common-env/commit/48f7939ea7e8d32ef20aedfee03d5d7a7383f005) feat(package): added check-build (@FGRibreau)
-- [5d70e58](https://github.com/FGRibreau/common-env/commit/5d70e58c2e4f8e58cc1378bf87573ad8dc3addd0) Update README.md (@FGRibreau)
-- [dad0535](https://github.com/FGRibreau/common-env/commit/dad053571cfc22ee71de91b2da13941866325aaf) docs(changelog) (@FGRibreau)
 
-### v5.2.0 (2015/11/10 14:47 +00:00)
-- [238ff9e](https://github.com/FGRibreau/common-env/commit/238ff9e73603c51848fdcd245f4fb15689db3c13) Release v5.2.0. (@FGRibreau)
-- [#16](https://github.com/FGRibreau/common-env/pull/16) Merge pull request #16 from jcare44/patch-1 (@jcare44)
-- [f1d68e5](https://github.com/FGRibreau/common-env/commit/f1d68e55679d2a6a101c3a11b7796dec9934f4ed) doc(README) (@jcare44)
-- [b245c8c](https://github.com/FGRibreau/common-env/commit/b245c8c887ea98a2040fdaf32862144e89242a5c) fix($type whithout $aliases) & add tests (@jcare44)
-- [855221f](https://github.com/FGRibreau/common-env/commit/855221f2efdd2ec8b0d3b64ea80145ac69d71eb2) fix(env) allow the use of $type without $aliases (@jcare44)
-- [452c1d5](https://github.com/FGRibreau/common-env/commit/452c1d5592ae70e211d6e10139a81858621ee693) fix(jshint) (@FGRibreau)
-- [3a8694c](https://github.com/FGRibreau/common-env/commit/3a8694cddbaae84eb1e331e282b582372e2c51f4) docs(changelog): v5.1.0 (@FGRibreau)
+<a name="5.3.0"></a>
+# 5.3.0 (2016-07-29)
 
-### v5.1.0 (2015/11/04 16:58 +00:00)
-- [749bd25](https://github.com/FGRibreau/common-env/commit/749bd255ef71d94e97d58e513b22fc99347ee741) Release v5.1.0. (@FGRibreau)
-- [4e5ad8a](https://github.com/FGRibreau/common-env/commit/4e5ad8abbfc3d9066aa0e3829866f47314dc843d) feat(changelog): updated changelog (@FGRibreau)
-- [d923729](https://github.com/FGRibreau/common-env/commit/d923729f1b086aceaf322c9e4358d3fa32bfcfea) refactor(env): rewrite to support node 0.10+ (@FGRibreau)
-- [87d7018](https://github.com/FGRibreau/common-env/commit/87d7018f86712f84b04e1988a7ed55685acff612) fix(jshint) (@FGRibreau)
-- [88edcbc](https://github.com/FGRibreau/common-env/commit/88edcbcad512c9e6a1eceb84d0866fabe28c9afa) fix(jshint) (@FGRibreau)
-- [#15](https://github.com/FGRibreau/common-env/pull/15) Merge pull request #15 from FGRibreau/BUG-14 (@FGRibreau)
-- [270c82a](https://github.com/FGRibreau/common-env/commit/270c82aea6569a501d3e2d1258d03677d4913226) docs(readme): added section for $type (@FGRibreau)
-- [117918d](https://github.com/FGRibreau/common-env/commit/117918ddda7139afd74e17a6c82f6672c1b054dc) feat($types): implemented env.types.Array (@FGRibreau)
-- [1e66d7a](https://github.com/FGRibreau/common-env/commit/1e66d7a6a4c11d1d2118e4ecea76e84003e99d98) docs(env): found a bug that will generate a breaking-change when fixed (@FGRibreau)
-- [5b25c2b](https://github.com/FGRibreau/common-env/commit/5b25c2b2576716744ef7fcb5cc1a3a4576cbe808) refactor(env): removed unused seemsBoolean (@FGRibreau)
-- [9da7886](https://github.com/FGRibreau/common-env/commit/9da7886d3b034b7e4a7d63c710f8896ab54ce8fb) feat($types): implemented env.types.String (@FGRibreau)
-- [fc0582e](https://github.com/FGRibreau/common-env/commit/fc0582e4851d3369051c7fedaf7493dce54606e4) feat($types): implemented env.types.Number and env.types.Boolean (@FGRibreau)
-- [594a26e](https://github.com/FGRibreau/common-env/commit/594a26e6c5ce62594ced093c392785007e678de8) style(env): removed space (@FGRibreau)
-- [f4f55ee](https://github.com/FGRibreau/common-env/commit/f4f55eeb50037c6260b9bddb5f392c26955d477a) feat(package): add test watch (@FGRibreau)
-- [37572a8](https://github.com/FGRibreau/common-env/commit/37572a871e6a007ecd7097b382ce650580b48784) Update README.md (@FGRibreau)
-- [5c8c23e](https://github.com/FGRibreau/common-env/commit/5c8c23ee952379df23a329e12dc2671c4be13b57) fix(jshint) (@FGRibreau)
-- [eeb67bf](https://github.com/FGRibreau/common-env/commit/eeb67bf28bd0c121d08463c6eaf21f61af9bd9d7) docs(changelog) (@FGRibreau)
+* Add  config option key ([4c89ff6](https://github.com/FGRibreau/common-env/commit/4c89ff6))
+* Release v5.3.0. ([b09d048](https://github.com/FGRibreau/common-env/commit/b09d048))
+* Update README.md ([00ff7f6](https://github.com/FGRibreau/common-env/commit/00ff7f6))
 
-### v5.0.0 (2015/08/24 16:11 +00:00)
-- [e53dbae](https://github.com/FGRibreau/common-env/commit/e53dbae84e99de457811543834bc72ff779a2780) Release v5.0.0. (@FGRibreau)
-- [5644a1b](https://github.com/FGRibreau/common-env/commit/5644a1b4d8f57355c144ec0ecd0b76465fdc7a48) feat(env): add a fail-fast behaviour to aliases, fixes #13 (@FGRibreau)
-- [#12](https://github.com/FGRibreau/common-env/pull/12) Merge pull request #12 from FGRibreau/documentation (@FGRibreau)
-- [698e61b](https://github.com/FGRibreau/common-env/commit/698e61b884a133500950c85c5e7dd13eaf983afc) Improved documentation on array and array aliases (@FGRibreau)
-- [e275f0a](https://github.com/FGRibreau/common-env/commit/e275f0ae4141cc359ffdc4c14c25193bdf9246da) Update README.md (@FGRibreau)
-- [#11](https://github.com/FGRibreau/common-env/pull/11) Merge pull request #11 from Freyskeyd/master (@Freyskeyd)
-- [b08b5f2](https://github.com/FGRibreau/common-env/commit/b08b5f272467473f4ac839bfd588bd45bfdadb5a) fix(README): missing parentheses in example (@Freyskeyd)
-- [e00b81a](https://github.com/FGRibreau/common-env/commit/e00b81a6afe7e38a694927df870456d71960a597) Update README.md (@FGRibreau)
-- [5a0e0b8](https://github.com/FGRibreau/common-env/commit/5a0e0b86a1540c454c7003045a84feab36a505c5) Update README.md (@FGRibreau)
-- [1b7b71f](https://github.com/FGRibreau/common-env/commit/1b7b71fab0aabb7742f6da5092e36600f2e1ac0b) Update README.md (@FGRibreau)
-- [288fcab](https://github.com/FGRibreau/common-env/commit/288fcab55f18452515a4eea303df2aaef1824a3a) Update README.md (@FGRibreau)
-- [2a12294](https://github.com/FGRibreau/common-env/commit/2a1229436d556ac92cc330ca7ec2521458ec095e) Update README.md (@FGRibreau)
-- [c8bf2c3](https://github.com/FGRibreau/common-env/commit/c8bf2c351673348e37442467de77aab19f9596b7) docs(changelog) (@FGRibreau)
 
-### v4.1.0 (2015/07/02 13:52 +00:00)
-- [a782c40](https://github.com/FGRibreau/common-env/commit/a782c409f3783249f46c833ee50ebba361e2b44e) Release v4.1.0. (@FGRibreau)
-- [e3643dd](https://github.com/FGRibreau/common-env/commit/e3643dd381dc962f9f2eec1b40aa0205a7742242) feat(env): support string, boolean and number arrays, fixes #10 (@FGRibreau)
-- [4d1349f](https://github.com/FGRibreau/common-env/commit/4d1349fca07d53aa4ac8500227e243fd7dc621a9) test(env): bring back tests on env variables (@FGRibreau)
-- [4788e25](https://github.com/FGRibreau/common-env/commit/4788e255434b885b8fd18d7258acba06fb2e3cc5) Update README.md (@FGRibreau)
-- [ec42e10](https://github.com/FGRibreau/common-env/commit/ec42e10ef9042328b3f9670595ecf6ffe6fdb17f) Update README.md (@FGRibreau)
-- [d5db983](https://github.com/FGRibreau/common-env/commit/d5db9833a5ea4c30488145d9deec654225b21cfa) add principle (@FGRibreau)
-- [a7e94e2](https://github.com/FGRibreau/common-env/commit/a7e94e2868c4d9c0cd5c17bcf06b47f76454d251) Update README.md (@FGRibreau)
 
-### v4.0.1 (2015/05/20 08:31 +00:00)
-- [3f9b85c](https://github.com/FGRibreau/common-env/commit/3f9b85c9831ca3ded562682a1163360448e92fd0) Release v4.0.1. (@FGRibreau)
-- [6f78b3f](https://github.com/FGRibreau/common-env/commit/6f78b3f8ccd0aa26ecba072ef025cf516e6c8722) fix(withLogger) (@FGRibreau)
-- [c72d6c3](https://github.com/FGRibreau/common-env/commit/c72d6c3b5bbea57a4e3ee3876de2ff6e115879ee) test(withLogger): add tests (@FGRibreau)
+<a name="5.2.1"></a>
+## 5.2.1 (2016-01-25)
 
-### v4.0.0 (2015/05/19 16:21 +00:00)
-- [6c457ec](https://github.com/FGRibreau/common-env/commit/6c457ec66b48b0361ed43bdc5ffce6f00436c082) Release v4.0.0. (@FGRibreau)
-- [2592751](https://github.com/FGRibreau/common-env/commit/259275176da5bffb8ae6b0bbeab253d0abec606f) fix(legacy): change to withLogger (@FGRibreau)
-- [72a4104](https://github.com/FGRibreau/common-env/commit/72a41048c077da8a7345275c7438ff86b726b1db) fix(legacy) (@FGRibreau)
+* docs(changelog) ([dad0535](https://github.com/FGRibreau/common-env/commit/dad0535))
+* Release v5.2.1. ([63d2ce9](https://github.com/FGRibreau/common-env/commit/63d2ce9))
+* Update README.md ([e224563](https://github.com/FGRibreau/common-env/commit/e224563))
+* Update README.md ([5d70e58](https://github.com/FGRibreau/common-env/commit/5d70e58))
+* fix(deps): upgraded lodash to 4.0.0 ([48903d1](https://github.com/FGRibreau/common-env/commit/48903d1))
+* fix(lib): added use-strict header ([849cae2](https://github.com/FGRibreau/common-env/commit/849cae2))
+* feat(package): added check-build ([48f7939](https://github.com/FGRibreau/common-env/commit/48f7939))
 
-### v3.0.1 (2015/05/19 16:10 +00:00)
-- [67fceaf](https://github.com/FGRibreau/common-env/commit/67fceaf6bc4b41638cb90fbe02e01b234f0bf0ad) Release v3.0.1. (@FGRibreau)
-- [22f12b0](https://github.com/FGRibreau/common-env/commit/22f12b078084c750cf40343e4af05dac6aa7bc01) fix(lint) (@FGRibreau)
 
-### v3.0.0 (2015/05/19 16:07 +00:00)
-- [7b06d66](https://github.com/FGRibreau/common-env/commit/7b06d66a36bb8aa87be8eb0302592ececefbe2c5) Release v3.0.0. (@FGRibreau)
-- [835e5c1](https://github.com/FGRibreau/common-env/commit/835e5c1fbed904160246ab2982da840644e1dfa8) feat(Commonenv): fully refactor (@FGRibreau)
-- [824be42](https://github.com/FGRibreau/common-env/commit/824be4299eedf39a816cc53016f964b44eecd540) chore(jshintrc): so bad. (@FGRibreau)
-- [bf72043](https://github.com/FGRibreau/common-env/commit/bf72043a5dde1387a0309b5fb0c5b25bc7d9c681) chore(jshintrc): so bad. (@FGRibreau)
-- [9be733d](https://github.com/FGRibreau/common-env/commit/9be733d15b9cdbe02ca29f236335e627806d29f0) chore(jshintrc): so bad. (@FGRibreau)
-- [809f779](https://github.com/FGRibreau/common-env/commit/809f779c0ca937c8beb1a96750b8f8c4e9a6f6ff) docs(changelog) (@FGRibreau)
 
-### v2.2.0 (2015/05/19 14:01 +00:00)
-- [16d9bd4](https://github.com/FGRibreau/common-env/commit/16d9bd4e3138003d0a4168687acca72fd77ef2ee) Release v2.2.0. (@FGRibreau)
-- [22ee5ce](https://github.com/FGRibreau/common-env/commit/22ee5ce3c8195361d1dc6687da148ec65092bbb0) fix($aliases): fixes #8 (@FGRibreau)
-- [35757d9](https://github.com/FGRibreau/common-env/commit/35757d9e47dd9a7b0bc85b770bcb02d10f08c1ee) docs(readme) (@FGRibreau)
-- [ac92842](https://github.com/FGRibreau/common-env/commit/ac92842ea3adae24cef648dcd23da7eba5c4803a) docs(changelog) (@FGRibreau)
+<a name="5.2.0"></a>
+# 5.2.0 (2015-11-10)
 
-### v2.1.1 (2015/05/18 14:24 +00:00)
-- [a859d5b](https://github.com/FGRibreau/common-env/commit/a859d5bef45335d64e8afe5800ca5c37c044158b) Release v2.1.1. (@FGRibreau)
+* doc(README) ([f1d68e5](https://github.com/FGRibreau/common-env/commit/f1d68e5))
+* fix($type whithout $aliases) & add tests ([b245c8c](https://github.com/FGRibreau/common-env/commit/b245c8c))
+* fix(env) allow the use of $type without $aliases ([855221f](https://github.com/FGRibreau/common-env/commit/855221f))
+* fix(jshint) ([452c1d5](https://github.com/FGRibreau/common-env/commit/452c1d5))
+* Release v5.2.0. ([238ff9e](https://github.com/FGRibreau/common-env/commit/238ff9e))
+* docs(changelog): v5.1.0 ([3a8694c](https://github.com/FGRibreau/common-env/commit/3a8694c))
 
-### v2.1.0 (2015/05/18 14:23 +00:00)
-- [a7d0425](https://github.com/FGRibreau/common-env/commit/a7d0425dc8efe3cc0e2e1040eb03d988bde14cc9) Release v2.1.0. (@FGRibreau)
-- [dc74a02](https://github.com/FGRibreau/common-env/commit/dc74a020db0dc2b7b878a1e14c2c60830211e23d) feat(aliases): added support for env. var. aliases, fixes #5 (@FGRibreau)
-- [25a986b](https://github.com/FGRibreau/common-env/commit/25a986bfc07ebbad7de136dcea76783c57ea41e5) docs(changelog): unpublished v1.2.1 since the change was not backward compatible, thus v2.0.0 was released (@FGRibreau)
 
-### v2.0.0 (2015/04/22 15:23 +00:00)
-- [452b2a6](https://github.com/FGRibreau/common-env/commit/452b2a6a5a0d5213b5e8b4dbd6c3a9d6731b9dba) Release v2.0.0. (@FGRibreau)
-- [e44f1db](https://github.com/FGRibreau/common-env/commit/e44f1dbbe62a729f412b9630fd2b3e11810b97e1) docs(changelog) (@FGRibreau)
 
-### v1.2.1 (2015/04/22 15:11 +00:00)
-- [056d51e](https://github.com/FGRibreau/common-env/commit/056d51e741c29c7552096e36a70e135fc80432d1) Release v1.2.1. (@FGRibreau)
-- [5e972f3](https://github.com/FGRibreau/common-env/commit/5e972f358babe578b81d750a61c8161e47b45609) fix(env): consider empty env variable as defined (@FGRibreau)
-- [a2cf4cd](https://github.com/FGRibreau/common-env/commit/a2cf4cd55527ea3c1b0308465a2fe34b7b572ee0) feat(ci) (@FGRibreau)
-- [f597b0e](https://github.com/FGRibreau/common-env/commit/f597b0e82d8c0123f32e297169d190d4e3900cbb) feat(changelog) (@FGRibreau)
-- [3cc7ba8](https://github.com/FGRibreau/common-env/commit/3cc7ba88a7ac7efa8196fe7f6f3cb668635cd44c) style(test) (@FGRibreau)
-- [7ee692b](https://github.com/FGRibreau/common-env/commit/7ee692b9ce7180417d8c28ca084033d605411bfc) chore(package): upgrade lodash (@FGRibreau)
+<a name="5.1.0"></a>
+# 5.1.0 (2015-11-04)
 
-### v1.2.0 (2015/03/26 09:40 +00:00)
-- [7a3aea2](https://github.com/FGRibreau/common-env/commit/7a3aea25387d7c72a105fa53c2db5e470a1a83f8) Release v1.2.0. (@FGRibreau)
-- [ed937e9](https://github.com/FGRibreau/common-env/commit/ed937e9466f25ea82effcdc49e84efc48a88127d) refactor(common-env) (@FGRibreau)
-- [066408f](https://github.com/FGRibreau/common-env/commit/066408f712e06bb3af848ffb030b0cdd6b6ae058) feat(env): array support for env variables, fixes #4 (@FGRibreau)
-- [eae047d](https://github.com/FGRibreau/common-env/commit/eae047dd6e13190b306722dfc8c6f134c5129e3d) fix(lint) (@FGRibreau)
+* docs(changelog) ([eeb67bf](https://github.com/FGRibreau/common-env/commit/eeb67bf))
+* fix(jshint) ([87d7018](https://github.com/FGRibreau/common-env/commit/87d7018))
+* fix(jshint) ([88edcbc](https://github.com/FGRibreau/common-env/commit/88edcbc))
+* fix(jshint) ([5c8c23e](https://github.com/FGRibreau/common-env/commit/5c8c23e))
+* Release v5.1.0. ([749bd25](https://github.com/FGRibreau/common-env/commit/749bd25))
+* Update README.md ([37572a8](https://github.com/FGRibreau/common-env/commit/37572a8))
+* feat($types): implemented env.types.Array ([117918d](https://github.com/FGRibreau/common-env/commit/117918d))
+* feat($types): implemented env.types.Number and env.types.Boolean ([fc0582e](https://github.com/FGRibreau/common-env/commit/fc0582e))
+* feat($types): implemented env.types.String ([9da7886](https://github.com/FGRibreau/common-env/commit/9da7886))
+* feat(changelog): updated changelog ([4e5ad8a](https://github.com/FGRibreau/common-env/commit/4e5ad8a))
+* feat(package): add test watch ([f4f55ee](https://github.com/FGRibreau/common-env/commit/f4f55ee))
+* refactor(env): removed unused seemsBoolean ([5b25c2b](https://github.com/FGRibreau/common-env/commit/5b25c2b))
+* refactor(env): rewrite to support node 0.10+ ([d923729](https://github.com/FGRibreau/common-env/commit/d923729))
+* docs(env): found a bug that will generate a breaking-change when fixed ([1e66d7a](https://github.com/FGRibreau/common-env/commit/1e66d7a))
+* docs(readme): added section for $type ([270c82a](https://github.com/FGRibreau/common-env/commit/270c82a))
+* style(env): removed space ([594a26e](https://github.com/FGRibreau/common-env/commit/594a26e))
 
-### v1.1.0 (2015/01/14 08:57 +00:00)
-- [1afea92](https://github.com/FGRibreau/common-env/commit/1afea92aa73fa9af30471decf9a8f46f85377ae9) Release v1.1.0. (@FGRibreau)
-- [6def133](https://github.com/FGRibreau/common-env/commit/6def1336be6db9dad890fc1857f8033bf7e67aac) chore(package) (@FGRibreau)
-- [e8e7295](https://github.com/FGRibreau/common-env/commit/e8e7295ec153955acb4559abd573f5d220e16d89) feat(options): allow user to ask common-env to not display env vars. values, closes #1 asked by @keruspe (@FGRibreau)
-- [8165b03](https://github.com/FGRibreau/common-env/commit/8165b03f126f39d96fce619379e8daa0bc9cd976) chore(package) (@FGRibreau)
-- [f1d425c](https://github.com/FGRibreau/common-env/commit/f1d425c14b4b0f1c1e059942e94f16904574d6ca) docs(readme) (@FGRibreau)
-- [6fd95ae](https://github.com/FGRibreau/common-env/commit/6fd95ae2002eb4418651368fd9724ba11a626432) docs(readme) (@FGRibreau)
-- [4558fdd](https://github.com/FGRibreau/common-env/commit/4558fdd15f5109229f5846e47664a01fc62413e0) docs(readme); (@FGRibreau)
-- [a8bd0cc](https://github.com/FGRibreau/common-env/commit/a8bd0ccfd3312c6dd8d93494aad4b96b83a1649d) docs(readme) (@FGRibreau)
-- [45aa9e8](https://github.com/FGRibreau/common-env/commit/45aa9e8e107b481bd81de5abf515043be47df98b) docs(readme): (@FGRibreau)
-- [1ba61a1](https://github.com/FGRibreau/common-env/commit/1ba61a11fe3b5971f13403566d565dd96b637bab) docs(gif): move. (@FGRibreau)
-- [3c013a0](https://github.com/FGRibreau/common-env/commit/3c013a06fbc750e1e65ca9a2009a2aaf33bcdfb2) docs(readme): (@FGRibreau)
-- [fed24cc](https://github.com/FGRibreau/common-env/commit/fed24cc843a5bd7142126243b2fc832bc7b805f5) . (@FGRibreau)
-- [b108da4](https://github.com/FGRibreau/common-env/commit/b108da450d1439901f252a86fd9fbd89a36ee288) chore(dotfiles) (@FGRibreau)
-- [3171087](https://github.com/FGRibreau/common-env/commit/31710872e1338f5fa351d50974ae995b620f7a8a) Initial commit (@FGRibreau)
+
+
+<a name="5.0.0"></a>
+# 5.0.0 (2015-08-24)
+
+* docs(changelog) ([c8bf2c3](https://github.com/FGRibreau/common-env/commit/c8bf2c3))
+* Improved documentation on array and array aliases ([698e61b](https://github.com/FGRibreau/common-env/commit/698e61b))
+* Release v5.0.0. ([e53dbae](https://github.com/FGRibreau/common-env/commit/e53dbae))
+* Update README.md ([e275f0a](https://github.com/FGRibreau/common-env/commit/e275f0a))
+* Update README.md ([e00b81a](https://github.com/FGRibreau/common-env/commit/e00b81a))
+* Update README.md ([5a0e0b8](https://github.com/FGRibreau/common-env/commit/5a0e0b8))
+* Update README.md ([1b7b71f](https://github.com/FGRibreau/common-env/commit/1b7b71f))
+* Update README.md ([288fcab](https://github.com/FGRibreau/common-env/commit/288fcab))
+* Update README.md ([2a12294](https://github.com/FGRibreau/common-env/commit/2a12294))
+* feat(env): add a fail-fast behaviour to aliases, fixes #13 ([5644a1b](https://github.com/FGRibreau/common-env/commit/5644a1b)), closes [#13](https://github.com/FGRibreau/common-env/issues/13)
+* fix(README): missing parentheses in example ([b08b5f2](https://github.com/FGRibreau/common-env/commit/b08b5f2))
+
+
+
+<a name="4.1.0"></a>
+# 4.1.0 (2015-07-02)
+
+* add principle ([d5db983](https://github.com/FGRibreau/common-env/commit/d5db983))
+* Release v4.1.0. ([a782c40](https://github.com/FGRibreau/common-env/commit/a782c40))
+* Update README.md ([4788e25](https://github.com/FGRibreau/common-env/commit/4788e25))
+* Update README.md ([ec42e10](https://github.com/FGRibreau/common-env/commit/ec42e10))
+* Update README.md ([a7e94e2](https://github.com/FGRibreau/common-env/commit/a7e94e2))
+* feat(env): support string, boolean and number arrays, fixes #10 ([e3643dd](https://github.com/FGRibreau/common-env/commit/e3643dd)), closes [#10](https://github.com/FGRibreau/common-env/issues/10)
+* test(env): bring back tests on env variables ([4d1349f](https://github.com/FGRibreau/common-env/commit/4d1349f))
+
+
+
+<a name="4.0.1"></a>
+## 4.0.1 (2015-05-20)
+
+* fix(withLogger) ([6f78b3f](https://github.com/FGRibreau/common-env/commit/6f78b3f))
+* Release v4.0.1. ([3f9b85c](https://github.com/FGRibreau/common-env/commit/3f9b85c))
+* test(withLogger): add tests ([c72d6c3](https://github.com/FGRibreau/common-env/commit/c72d6c3))
+
+
+
+<a name="4.0.0"></a>
+# 4.0.0 (2015-05-19)
+
+* fix(legacy) ([72a4104](https://github.com/FGRibreau/common-env/commit/72a4104))
+* Release v4.0.0. ([6c457ec](https://github.com/FGRibreau/common-env/commit/6c457ec))
+* fix(legacy): change to withLogger ([2592751](https://github.com/FGRibreau/common-env/commit/2592751))
+
+
+
+<a name="3.0.1"></a>
+## 3.0.1 (2015-05-19)
+
+* fix(lint) ([22f12b0](https://github.com/FGRibreau/common-env/commit/22f12b0))
+* Release v3.0.1. ([67fceaf](https://github.com/FGRibreau/common-env/commit/67fceaf))
+
+
+
+<a name="3.0.0"></a>
+# 3.0.0 (2015-05-19)
+
+* docs(changelog) ([809f779](https://github.com/FGRibreau/common-env/commit/809f779))
+* Release v3.0.0. ([7b06d66](https://github.com/FGRibreau/common-env/commit/7b06d66))
+* feat(Commonenv): fully refactor ([835e5c1](https://github.com/FGRibreau/common-env/commit/835e5c1))
+* chore(jshintrc): so bad. ([824be42](https://github.com/FGRibreau/common-env/commit/824be42))
+* chore(jshintrc): so bad. ([bf72043](https://github.com/FGRibreau/common-env/commit/bf72043))
+* chore(jshintrc): so bad. ([9be733d](https://github.com/FGRibreau/common-env/commit/9be733d))
+
+
+
+<a name="2.2.0"></a>
+# 2.2.0 (2015-05-19)
+
+* docs(changelog) ([ac92842](https://github.com/FGRibreau/common-env/commit/ac92842))
+* docs(readme) ([35757d9](https://github.com/FGRibreau/common-env/commit/35757d9))
+* Release v2.2.0. ([16d9bd4](https://github.com/FGRibreau/common-env/commit/16d9bd4))
+* fix($aliases): fixes #8 ([22ee5ce](https://github.com/FGRibreau/common-env/commit/22ee5ce)), closes [#8](https://github.com/FGRibreau/common-env/issues/8)
+
+
+
+<a name="2.1.1"></a>
+## 2.1.1 (2015-05-18)
+
+* Release v2.1.1. ([a859d5b](https://github.com/FGRibreau/common-env/commit/a859d5b))
+
+
+
+<a name="2.1.0"></a>
+# 2.1.0 (2015-05-18)
+
+* Release v2.1.0. ([a7d0425](https://github.com/FGRibreau/common-env/commit/a7d0425))
+* feat(aliases): added support for env. var. aliases, fixes #5 ([dc74a02](https://github.com/FGRibreau/common-env/commit/dc74a02)), closes [#5](https://github.com/FGRibreau/common-env/issues/5)
+* docs(changelog): unpublished v1.2.1 since the change was not backward compatible, thus v2.0.0 was re ([25a986b](https://github.com/FGRibreau/common-env/commit/25a986b))
+
+
+
+<a name="2.0.0"></a>
+# 2.0.0 (2015-04-22)
+
+* docs(changelog) ([e44f1db](https://github.com/FGRibreau/common-env/commit/e44f1db))
+* Release v2.0.0. ([452b2a6](https://github.com/FGRibreau/common-env/commit/452b2a6))
+
+
+
+<a name="1.2.1"></a>
+## 1.2.1 (2015-04-22)
+
+* feat(changelog) ([f597b0e](https://github.com/FGRibreau/common-env/commit/f597b0e))
+* feat(ci) ([a2cf4cd](https://github.com/FGRibreau/common-env/commit/a2cf4cd))
+* Release v1.2.1. ([056d51e](https://github.com/FGRibreau/common-env/commit/056d51e))
+* style(test) ([3cc7ba8](https://github.com/FGRibreau/common-env/commit/3cc7ba8))
+* fix(env): consider empty env variable as defined ([5e972f3](https://github.com/FGRibreau/common-env/commit/5e972f3))
+* chore(package): upgrade lodash ([7ee692b](https://github.com/FGRibreau/common-env/commit/7ee692b))
+
+
+
+<a name="1.2.0"></a>
+# 1.2.0 (2015-03-26)
+
+* fix(lint) ([eae047d](https://github.com/FGRibreau/common-env/commit/eae047d))
+* refactor(common-env) ([ed937e9](https://github.com/FGRibreau/common-env/commit/ed937e9))
+* Release v1.2.0. ([7a3aea2](https://github.com/FGRibreau/common-env/commit/7a3aea2))
+* feat(env): array support for env variables, fixes #4 ([066408f](https://github.com/FGRibreau/common-env/commit/066408f)), closes [#4](https://github.com/FGRibreau/common-env/issues/4)
+
+
+
+<a name="1.1.0"></a>
+# 1.1.0 (2015-01-14)
+
+* . ([fed24cc](https://github.com/FGRibreau/common-env/commit/fed24cc))
+* chore(dotfiles) ([b108da4](https://github.com/FGRibreau/common-env/commit/b108da4))
+* chore(package) ([8165b03](https://github.com/FGRibreau/common-env/commit/8165b03))
+* chore(package) ([6def133](https://github.com/FGRibreau/common-env/commit/6def133))
+* docs(readme) ([a8bd0cc](https://github.com/FGRibreau/common-env/commit/a8bd0cc))
+* docs(readme) ([f1d425c](https://github.com/FGRibreau/common-env/commit/f1d425c))
+* docs(readme) ([6fd95ae](https://github.com/FGRibreau/common-env/commit/6fd95ae))
+* docs(readme); ([4558fdd](https://github.com/FGRibreau/common-env/commit/4558fdd))
+* docs(readme): ([45aa9e8](https://github.com/FGRibreau/common-env/commit/45aa9e8))
+* docs(readme): ([3c013a0](https://github.com/FGRibreau/common-env/commit/3c013a0))
+* Initial commit ([3171087](https://github.com/FGRibreau/common-env/commit/3171087))
+* Release v1.1.0. ([1afea92](https://github.com/FGRibreau/common-env/commit/1afea92))
+* feat(options): allow user to ask common-env to not display env vars. values, closes #1 asked by @ker ([e8e7295](https://github.com/FGRibreau/common-env/commit/e8e7295)), closes [#1](https://github.com/FGRibreau/common-env/issues/1)
+* docs(gif): move. ([1ba61a1](https://github.com/FGRibreau/common-env/commit/1ba61a1))
+
+
+
