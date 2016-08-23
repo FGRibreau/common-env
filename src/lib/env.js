@@ -6,9 +6,13 @@ const _ = require('lodash');
 const types = require('./types');
 const EventEmitter = require('events').EventEmitter;
 
-const CommonEnvGetOrDieException = require('./errors/CommonEnvGetOrDieException');
-const CommonEnvGetOrDieAliasesException = require('./errors/CommonEnvGetOrDieAliasesException');
-const CommonEnvRootConfigurationObjectException = require('./errors/CommonEnvRootConfigurationObjectException');
+const errors = require('./errors');
+const {
+  CommonEnvInvalidConfiguration,
+  CommonEnvRootConfigurationObjectException,
+  CommonEnvGetOrDieAliasesException,
+  CommonEnvGetOrDieException
+} = errors;
 
 const EVENT_FOUND = 'env:found';
 const EVENT_FALLBACK = 'env:fallback';
@@ -89,7 +93,7 @@ module.exports = function envFactory() {
         // then extract the number from the env key name
         .map(([envKey, envVal], k) => {
           const matches = envKey.substring(envKeyNamePrefix.length).match(/^__([0-9]+)/)
-          return matches ? parseInt(matches[1], 10) : 0;
+          return parseInt(matches[1], 10);
         })
         .max()
         .value() || 0;
@@ -110,14 +114,23 @@ module.exports = function envFactory() {
    */
   function _getOrElseConfigurationObject(config, context) {
 
-    if ((config.$type || config.$secure) && _.isUndefined(config.$aliases)) {
-      config.$aliases = [];
+    if (!_.isUndefined(config.$secure) && typeof(config.$secure) !== 'boolean') {
+      throw new Error('$secure must be a boolean');
     }
+    if (!_.isUndefined(config.$aliases) && !Array.isArray(config.$aliases)) {
+      throw new Error('$aliases must be an array');
+    }
+
+    const aliaseOrSecureIsDefined = !_.isUndefined(config.$aliases) || !_.isUndefined(config.$secure);
+    if (aliaseOrSecureIsDefined && (_.isUndefined(config.$type) && _.isUndefined(config.$default))) {
+      throw new CommonEnvInvalidConfiguration(context.fullKeyName);
+    }
+
     if (_.isUndefined(config.$secure)) {
       config.$secure = false;
     }
-    if (!Array.isArray(config.$aliases) && typeof(config.$secure) !== 'boolean') {
-      throw new Error('Common-env: $aliases or $secure must be defined along side $default, key: ' + context.fullKeyName);
+    if (_.isUndefined(config.$aliases)) {
+      config.$aliases = [];
     }
 
     // if `$type` is specified it will be used as a type checker and converter, otherwise infer the type from ``$default`
@@ -183,7 +196,7 @@ module.exports = function envFactory() {
     return value;
   }
 
-  return _.extend(em, {
+  return _.extend(em, errors, {
     getOrElseAll: getOrElseAll,
     getOrElse: getOrElse,
     getOrDie: getOrDie,
@@ -191,10 +204,7 @@ module.exports = function envFactory() {
     EVENT_FOUND: EVENT_FOUND,
     EVENT_FALLBACK: EVENT_FALLBACK,
 
-    types: types.convert,
-
-    CommonEnvGetOrDieException: CommonEnvGetOrDieException,
-    CommonEnvGetOrDieAliasesException: CommonEnvGetOrDieAliasesException
+    types: types.convert
   });
 };
 

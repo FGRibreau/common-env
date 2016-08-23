@@ -423,12 +423,42 @@ describe('.getOrElseAll', function() {
   });
 
   describe('fail-fast behaviour', function() {
+    it('should throw an error  $aliases was defined without nothing else', function() {
+      t.throws(function() {
+        env.getOrElseAll({
+          thisIsA: {
+            missing: [{
+              sadVar: {
+                $aliases: ['MISSING_VAR_' + (+new Date()), 'MISSING_VAR_2' + (+new Date())]
+              }
+            }]
+          }
+        });
+      }, env.CommonEnvInvalidConfiguration);
+    });
+
+    it('should throw an error if aliases is not an array', function() {
+      t.throws(function() {
+        env.getOrElseAll({
+          thisIsA: {
+            missing: [{
+              sadVar: {
+                $default: 10,
+                $aliases: null
+              }
+            }]
+          }
+        });
+      }, Error);
+    });
+
     it('should throw an error if $default is not defined and that no environment variables was specified', function() {
       t.throws(function() {
         env.getOrElseAll({
           thisIsA: {
             missing: [{
               sadVar: {
+                $type: env.types.Float,
                 $aliases: ['MISSING_VAR_' + (+new Date()), 'MISSING_VAR_2' + (+new Date())]
               }
             }]
