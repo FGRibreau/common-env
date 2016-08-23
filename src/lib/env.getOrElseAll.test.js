@@ -1,21 +1,21 @@
 'use strict';
 
-var envFactory = require('..');
+var envFactory = require('../..');
 var t = require('chai').assert;
 var _ = require('lodash');
 
-describe('.getOrElseAll', function () {
+describe('.getOrElseAll', function() {
   var env;
   var eventsFound = {};
   var eventsFallback = {};
 
-  beforeEach(function () {
+  beforeEach(function() {
     env = envFactory();
     env
-      .on(env.EVENT_FOUND, function (fullKeyName, value) {
+      .on(env.EVENT_FOUND, function(fullKeyName, value) {
         eventsFound[fullKeyName] = value;
       })
-      .on(env.EVENT_FALLBACK, function (fullKeyName, $default) {
+      .on(env.EVENT_FALLBACK, function(fullKeyName, $default) {
         eventsFallback[fullKeyName] = $default;
       });
     process.env = {};
@@ -26,17 +26,16 @@ describe('.getOrElseAll', function () {
     process.env.AMQP_PASSWORD = '';
     process.env.A_B_C_DOVERRIDE = '2,3,4';
     process.env.MY_AWESOME_ARRAY_ALIASE_D = '5,7,8';
-    process.env['PLOP_API[0]_A'] = 3;
   });
 
-  it('should emit events', function (done) {
+  it('should emit events', function(done) {
     var doneAfterTwoCall = _.after(2, done);
     env
-      .on(env.EVENT_FOUND, function (fullKeyName, value) {
+      .on(env.EVENT_FOUND, function(fullKeyName, value) {
         console.log('[env] %s was defined, using: %s', fullKeyName, String(value));
         doneAfterTwoCall();
       })
-      .on(env.EVENT_FALLBACK, function (fullKeyName, $default) {
+      .on(env.EVENT_FALLBACK, function(fullKeyName, $default) {
         console.log('[env] %s was not defined, using default: %s', fullKeyName, String($default));
         doneAfterTwoCall();
       })
@@ -50,7 +49,7 @@ describe('.getOrElseAll', function () {
       });
   });
 
-  it('should return an object', function () {
+  it('should return an object', function() {
     var config = env.getOrElseAll({
       AMQP: {
         LoGiN: 'guest', // add a bug inside key name (mix lower/upper case)
@@ -123,7 +122,7 @@ describe('.getOrElseAll', function () {
     t.strictEqual(config.c.root, '');
   });
 
-  it('should return ask for ENV vars', function () {
+  it('should return ask for ENV vars', function() {
     env.getOrElseAll({
       plop: {
         root_token: 'sdfopiqjsdfpoij',
@@ -140,24 +139,75 @@ describe('.getOrElseAll', function () {
     t.ok(_.has(eventsFallback, 'PLOP_API_ENDPOINT_PORT'), 'PLOP_API_ENDPOINT_PORT');
   });
 
+  describe('ENV vars as array handling', () =>  {
+    it('should handle array of plain objects', function() {
+      process.env['ARRAYWITHOBJECT_API__0_A'] = 3;
+      process.env['ARRAYWITHOBJECT_API__2_A'] = 1;
 
-  it('should handle array as ENV vars', function () {
-    var config = env.getOrElseAll({
-      plop: {
-        api: [{
-          a: 1
-          }, {
-          a: 2
-          }]
-      }
+      var config = env.getOrElseAll({
+        arrayWithObject: {
+          api: [{
+            a: 1
+            }, {
+            a: 2
+            }]
+        }
+      });
+      t.strictEqual(config.arrayWithObject.api[0].a, 3, 'config.arrayWithObject.api[0].a');
+      t.strictEqual(config.arrayWithObject.api[1].a, 2, 'config.arrayWithObject.api[1].a');
+      t.strictEqual(config.arrayWithObject.api[2].a, 1, 'config.arrayWithObject.api[2].a');
+
+      t.ok(_.has(eventsFound, 'ARRAYWITHOBJECT_API__0_A'), 'ARRAYWITHOBJECT_API__0_A should have been found');
+      t.ok(_.has(eventsFallback, 'ARRAYWITHOBJECT_API__1_A'), 'ARRAYWITHOBJECT_API__1_A should have NOT been found');
+      t.ok(_.has(eventsFound, 'ARRAYWITHOBJECT_API__2_A'), 'ARRAYWITHOBJECT_API__2_A should have been found');
     });
-    t.strictEqual(config.plop.api[0].a, 3);
-    t.ok(_.has(eventsFound, 'PLOP_API[0]_A'), 'PLOP_ROOT_TOKEN');
-    t.ok(_.has(eventsFallback, 'PLOP_API[1]_A'), 'PLOP_ROOT_TOKEN');
+
+    it('should handle an array of objects with description objects', function() {
+      process.env['ARRAYWITHOBJECT_API__0_INT'] = 3;
+      process.env['ARRAYWITHOBJECT_API__1_A'] = 2;
+      process.env['ARRAYWITHOBJECT_API__2_INT'] = 1;
+
+      var config = env.getOrElseAll({
+        arrayWithObject: {
+          api: [{
+            int: {
+              $default: 2,
+              $type: env.types.Integer
+            },
+            a: 1
+          }]
+        }
+      });
+
+      if (!config.arrayWithObject.api[0].int) {
+        // for debug only
+        console.log(config.arrayWithObject.api);
+      }
+      t.strictEqual(config.arrayWithObject.api[0].int, 3, 'config.arrayWithObject.api[0].int');
+      t.strictEqual(config.arrayWithObject.api[1].int, 2, 'config.arrayWithObject.api[1].int');
+      t.strictEqual(config.arrayWithObject.api[1].a, 2, 'config.arrayWithObject.api[1].a');
+      t.strictEqual(config.arrayWithObject.api[2].int, 1, 'config.arrayWithObject.api[2].int');
+      t.ok(_.has(eventsFound, 'ARRAYWITHOBJECT_API__0_INT'), 'ARRAYWITHOBJECT_API__0_INT should have been found');
+      t.ok(_.has(eventsFallback, 'ARRAYWITHOBJECT_API__1_INT'), 'ARRAYWITHOBJECT_API__1_INT should have NOT been found');
+      t.ok(_.has(eventsFound, 'ARRAYWITHOBJECT_API__2_INT'), 'ARRAYWITHOBJECT_API__2_INT should have been found');
+    });
+
+    it('should throw an error handle array of description objects objects', function() {
+      t.throws(() => {
+        env.getOrElseAll({
+          arrayWithObject: {
+            api: [{
+              $default: 2,
+              $type: env.types.Integer
+            }]
+          }
+        });
+      }, 'CommonEnvRootConfigurationObjectException: ARRAYWITHOBJECT_API__0_');
+    });
   });
 
-  describe('$aliases handling', function () {
-    it('should handle $default object value', function () {
+  describe('$aliases handling', function() {
+    it('should handle $default object value', function() {
       var config = env.getOrElseAll({
         a: {
           b: [{
@@ -184,10 +234,10 @@ describe('.getOrElseAll', function () {
       t.ok(_.has(eventsFound, 'AMQP_GOOD_PORT'), 'A_B[1]_A was defined should be printed');
     });
 
-    it('should handle $default object value and fallback on default value', function () {
+    it('should handle $default object value and fallback on default value', function() {
       var config = env.getOrElseAll({
         a: {
-          b: [{}, {
+          b: [{
             a: {
               $default: 'plop2',
               $aliases: ['BLABLA_BLABLA'] // `BLABLA_BLABLA` does not exist, it should fallback on "plop"
@@ -195,13 +245,13 @@ describe('.getOrElseAll', function () {
           }]
         }
       });
-      t.strictEqual(config.a.b[1].a, 'plop2');
-      t.ok(_.has(eventsFallback, 'A_B[1]_A'), 'A_B[1]_A was not defined should be printed');
+      t.strictEqual(config.a.b[0].a, 'plop2');
+      t.ok(_.has(eventsFallback, 'A_B__0_A'), 'A_B__0_A was not defined should be printed');
     });
 
-    describe('if $type was specified', function () {
-      var env = envFactory();
-      var tests = [
+    describe('if $type was specified', function() {
+      const env = envFactory();
+      const tests = [
         {
           converter: env.types.Integer,
           val: '10',
@@ -222,6 +272,10 @@ describe('.getOrElseAll', function () {
           converter: env.types.Float,
           val: '102039.23',
           converted: 102039.23
+        }, {
+          converter: env.types.Float,
+          val: 'aaa',
+          converted: Error
         }, {
           converter: env.types.Boolean,
           val: 'true',
@@ -262,6 +316,10 @@ describe('.getOrElseAll', function () {
           converter: env.types.Array(env.types.Integer),
           val: '1',
           converted: [1]
+        },{
+          converter: env.types.Array(env.types.Integer),
+          val: 'a,a',
+          converted: Error
         }, {
           converter: env.types.Array(env.types.Float),
           val: '1,2.2,3,4.4',
@@ -279,7 +337,7 @@ describe('.getOrElseAll', function () {
           val: 'true',
           converted: [true]
         }
-      ].map(function (test) {
+      ].map(function(test) {
         return _.extend({}, {
           varName: (test.converter._name.toUpperCase() + '_' + test.val).replace('.', '_')
         }, test);
@@ -291,11 +349,15 @@ describe('.getOrElseAll', function () {
       });
 
       beforeEach(function() {
-        _.forEach(tests, function(v){process.env[v.varName] = v.val;});
+        _.forEach(tests, function(v) {
+          process.env[v.varName] = v.val;
+        });
       });
 
       afterEach(function() {
-        _.forEach(tests, function(v){ delete process.env[v.varName];});
+        _.forEach(tests, function(v) {
+          delete process.env[v.varName];
+        });
       });
 
       _.forEach(tests, function(v) {
@@ -346,12 +408,23 @@ describe('.getOrElseAll', function () {
         });
 
       });
+
+
+      it('throws an error if `itemConverter` was not a function', () => {
+        t.throw(() => {
+          env.getOrElseAll({
+            a:{
+              $type: env.types.Array('plop')
+            }
+          })
+        });
+      });
     });
   });
 
-  describe('fail-fast behaviour', function () {
-    it('should throw an error if $default is not defined and that no environment variables was specified', function () {
-      t.throws(function () {
+  describe('fail-fast behaviour', function() {
+    it('should throw an error  $aliases was defined without nothing else', function() {
+      t.throws(function() {
         env.getOrElseAll({
           thisIsA: {
             missing: [{
@@ -361,11 +434,41 @@ describe('.getOrElseAll', function () {
             }]
           }
         });
+      }, env.CommonEnvInvalidConfiguration);
+    });
+
+    it('should throw an error if aliases is not an array', function() {
+      t.throws(function() {
+        env.getOrElseAll({
+          thisIsA: {
+            missing: [{
+              sadVar: {
+                $default: 10,
+                $aliases: null
+              }
+            }]
+          }
+        });
+      }, Error);
+    });
+
+    it('should throw an error if $default is not defined and that no environment variables was specified', function() {
+      t.throws(function() {
+        env.getOrElseAll({
+          thisIsA: {
+            missing: [{
+              sadVar: {
+                $type: env.types.Float,
+                $aliases: ['MISSING_VAR_' + (+new Date()), 'MISSING_VAR_2' + (+new Date())]
+              }
+            }]
+          }
+        });
       }, env.CommonEnvGetOrDieAliasesException);
     });
   });
 
-  afterEach(function () {
+  afterEach(function() {
     delete process.env.AMQP_LOGIN;
     delete process.env.AMQP_CONNECT;
     delete process.env.AMQP_CONNECT2;

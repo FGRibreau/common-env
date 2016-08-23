@@ -3,20 +3,28 @@
   "version": "5.4.0",
   "keywords": [
     "environment",
+    "configuration",
+    "process.env",
     "env",
     "var",
     "getenv",
     "variables"
   ],
   "description": "A nice little helper for retrieving configuration from environment variable",
-  "main": "./lib",
+  "main": "./src/lib",
   "directories": {
     "doc": "docs",
     "test": "test"
   },
+  "engines": {
+    "node": "6"
+  },
   "scripts": {
-    "test": "mocha test",
-    "test-watch": "mocha -R min -w test",
+    "test": "npm run test-unit && npm run test-coverage",
+    "test-unit": "mocha $(find src -name '*.test.js')",
+    "test-watch": "mocha -R min -w  $(find src -name '*.test.js')",
+    "test-coverage": "nyc --all --statements=100 --lines=100 --functions=100 --branches=100 --check-coverage --reporter=lcov --reporter=cobertura --report-dir=coverage -- mocha -R spec -t 100000  $(find src -name '*.test.js')",
+    "send-coverage": "cat ./coverage/lcov.info | coveralls",
     "check-build": "check-build",
     "update": "updtr",
     "changelog": "github-changes --o $(node -p 'process.env.npm_package_repository_url.split(\"/\")[3];') --r $(node -p 'a=process.env.npm_package_repository_url.split(\"/\");a[a.length-1].split(\".\")[0]') --token $CHANGELOG_GITHUB_TOKEN_FG -f CHANGELOG.md"
@@ -30,15 +38,26 @@
   "bugs": {
     "url": "https://github.com/FGRibreau/common-env/issues"
   },
+  "nyc": {
+    "exclude": [
+      "node_modules",
+      "dist",
+      "coverage",
+      "webpack.config.js",
+      "**/**.test.js"
+    ]
+  },
   "homepage": "https://github.com/FGRibreau/common-env",
   "devDependencies": {
     "chai": "^3.5.0",
     "check-build": "^2.8.2",
-    "github-changes": "^1.0.2",
-    "mocha": "^3.0.2"
+    "coveralls": "^2.11.12",
+    "github-changes": "^1.0.4",
+    "mocha": "^3.0.2",
+    "nyc": "^8.1.0",
+    "updtr": "^0.2.1"
   },
   "dependencies": {
-    "lodash": "^4.15.0",
-    "updtr": "^0.2.1"
+    "lodash": "^4.15.0"
   }
 }

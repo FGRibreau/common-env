@@ -56,7 +56,7 @@ function BooleanConverter(mixed) {
 
 function ArrayConverter(itemConverter){
   if(!_.isFunction(itemConverter)){
-    throw new Error('itermConverter from ArrayConverter(itermConverter) should be a function');
+    throw new Error('itemConverter from ArrayConverter(itemConverter) should be a function');
   }
 
   return createType('Array('+itemConverter._name+')', function(mixed){

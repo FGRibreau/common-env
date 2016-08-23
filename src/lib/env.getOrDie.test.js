@@ -1,12 +1,12 @@
 'use strict';
 
-var t = require('chai').assert;
+const t = require('chai').assert;
 
 describe('.getOrDie', function () {
-  var env;
+  let env;
 
   beforeEach(function () {
-    env = require('..')();
+    env = require('../..')();
   });
 
   it('should crash the app if the env. variable did not exist', function () {
