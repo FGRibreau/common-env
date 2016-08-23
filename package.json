@@ -16,7 +16,7 @@
     "doc": "docs",
     "test": "test"
   },
-  "engines":{
+  "engines": {
     "node": "6"
   },
   "scripts": {
@@ -52,12 +52,12 @@
     "chai": "^3.5.0",
     "check-build": "^2.8.2",
     "coveralls": "^2.11.12",
-    "github-changes": "^1.0.2",
+    "github-changes": "^1.0.4",
     "mocha": "^3.0.2",
-    "nyc": "^8.1.0"
+    "nyc": "^8.1.0",
+    "updtr": "^0.2.1"
   },
   "dependencies": {
-    "lodash": "^4.15.0",
-    "updtr": "^0.2.1"
+    "lodash": "^4.15.0"
   }
 }
