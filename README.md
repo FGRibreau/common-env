@@ -137,6 +137,22 @@ It's sometimes useful to be able to specify aliases, for instance [Clever-cloud]
 
 Common-env adds a [layer of indirection](http://en.wikipedia.org/wiki/Fundamental_theorem_of_software_engineering) enabling you to specify environment aliases that won't impact your codebase.
 
+#### How to gather environment variable arrays
+
+Since **v6**, common-env is able to read arrays from environment variables. First don't forget that **environment variables do not support arrays**, thus `MY_ENV_VAR[0]_A` is not a valid varable, as well as `MY_ENV_VAR$0$_A` and so on. In fact, the only supported characters are `[0-9_]`. Since we wanted a lot array support for common-env [we had to find a work-around](https://github.com/FGRibreau/common-env/issues/6).
+
+And that's what we did:
+
+| Configuration key path | Generated environment key |
+|---|---|
+| amqp.exchanges[0].name | AMQP_EXCHANGES__0_NAME |
+| amqp.exchanges[10].name | AMQP_EXCHANGES__10_NAME |
+
+
+Note that:
+
+  - only the first element of the array will be used as a description for every other element of the array. that's really important!
+
 #### How to specify environment variable arrays
 
 Common-env is able to use arrays as key values for instance:
@@ -191,6 +207,13 @@ $ ADDON_RABBITMQ_HOSTS='127.0.0.1' node test.js
 $ LOCAL_RABBITMQ_HOSTS='88.23.21.21,88.23.21.22,88.23.21.23' node test.js
 ['88.23.21.21', '88.23.21.22', '88.23.21.23']
 ```
+
+If the aliase is inside an array (or multiple array) you will have to specify `[INDEX]` magic parameter so common-env will be able to replace it with a valid index.
+
+| `$aliases` Configuration key path | Sample of lookup key |
+|---|---|
+| EXCHANGES[INDEX]_NAME | EXCHANGES__0_NAME |
+
 
 ##### fail-fast behaviour
 
