@@ -2,11 +2,13 @@
 'use strict';
 
 const _ = require('lodash');
+
 const types = require('./types');
 const EventEmitter = require('events').EventEmitter;
-const CommonEnvGetOrDieException = require('./CommonEnvGetOrDieException');
-const CommonEnvGetOrDieAliasesException = require('./CommonEnvGetOrDieAliasesException');
-const CommonEnvRootConfigurationObjectException = require('./CommonEnvRootConfigurationObjectException');
+
+const CommonEnvGetOrDieException = require('./errors/CommonEnvGetOrDieException');
+const CommonEnvGetOrDieAliasesException = require('./errors/CommonEnvGetOrDieAliasesException');
+const CommonEnvRootConfigurationObjectException = require('./errors/CommonEnvRootConfigurationObjectException');
 
 const EVENT_FOUND = 'env:found';
 const EVENT_FALLBACK = 'env:fallback';
@@ -93,10 +95,10 @@ module.exports = function envFactory() {
         .value() || 0;
     }
 
-    return _.range(0, maxArrayIndex + 1).map(function(___, index) {
+    return _.range(0, getMaxIndex(context.fullKeyName, process.env) + 1).map(function(___, index) {
       const object = arrayValues[index] ||  arrayValues[0];
       // we always use the first element of the array as a full type descriptor of every other element of this array
-      return getOrElseAll(object, addArrayIndex(addSuffix(context, '__' + index + '_'), index));
+      return getOrElseAll(object, addSuffix(context, '__' + index + '_'), index);
     });
   }
 
@@ -121,16 +123,7 @@ module.exports = function envFactory() {
     // if `$type` is specified it will be used as a type checker and converter, otherwise infer the type from ``$default`
     var $typeConverter = config.$type || getTypeConverter(config.$default);
 
-    function replaceIndexInAliases(varEnvName){
-      return _.replaceMap(varEnvName, ALIASES_ARRAY_INDEX_PATTERN, (startAt, i) => context.arrayIndices[i]);
-    }
-
-    if(context.arrayIndices.length > 0){
-      // the configuration object is inside at least one array.
-      // we need to find the upper-index
-    }
-
-    return config.$aliases.concat([context.fullKeyName]).map(replaceIndexInAliases).reduce(function(memo, varEnvName, i, aliases) {
+    return config.$aliases.concat([context.fullKeyName]).reduce(function(memo, varEnvName, i, aliases) {
       var isLast = i === aliases.length - 1;
 
       if (memo !== null) {

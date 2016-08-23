@@ -182,6 +182,8 @@ $ AMQP_HOSTS='88.23.21.21,88.23.21.22,88.23.21.23' node test.js
 
 #### How to specify environment variable arrays using $aliases
 
+**Deprecated** aliases breaks common-env philosophy by allowing a developer to specify environment variables that matches outside constraints (like a company convention). Since a software internal configuration should not depends on external factors, this feature is now deprecated.
+
 ```javascript
 // test.js
 var env = require('common-env')();
@@ -208,11 +210,7 @@ $ LOCAL_RABBITMQ_HOSTS='88.23.21.21,88.23.21.22,88.23.21.23' node test.js
 ['88.23.21.21', '88.23.21.22', '88.23.21.23']
 ```
 
-If the aliase is inside an array (or multiple array) you will have to specify `[INDEX]` magic parameter so common-env will be able to replace it with a valid index.
-
-| `$aliases` Configuration key path | Sample of lookup key |
-|---|---|
-| EXCHANGES[INDEX]_NAME | EXCHANGES__0_NAME |
+Aliases don't supports arrays in their names and never will. **$aliases is deprecated**, please use common-env classical form.
 
 
 ##### fail-fast behaviour

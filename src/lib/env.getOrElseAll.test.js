@@ -1,6 +1,6 @@
 'use strict';
 
-var envFactory = require('..');
+var envFactory = require('../..');
 var t = require('chai').assert;
 var _ = require('lodash');
 
@@ -192,7 +192,6 @@ describe('.getOrElseAll', function() {
       t.ok(_.has(eventsFound, 'ARRAYWITHOBJECT_API__2_INT'), 'ARRAYWITHOBJECT_API__2_INT should have been found');
     });
 
-
     it('should throw an error handle array of description objects objects', function() {
       t.throws(() => {
         env.getOrElseAll({
@@ -238,7 +237,7 @@ describe('.getOrElseAll', function() {
     it('should handle $default object value and fallback on default value', function() {
       var config = env.getOrElseAll({
         a: {
-          b: [{}, {
+          b: [{
             a: {
               $default: 'plop2',
               $aliases: ['BLABLA_BLABLA'] // `BLABLA_BLABLA` does not exist, it should fallback on "plop"
@@ -246,8 +245,8 @@ describe('.getOrElseAll', function() {
           }]
         }
       });
-      t.strictEqual(config.a.b[1].a, 'plop2');
-      t.ok(_.has(eventsFallback, 'A_B__1_A'), 'A_B__1_A was not defined should be printed');
+      t.strictEqual(config.a.b[0].a, 'plop2');
+      t.ok(_.has(eventsFallback, 'A_B__0_A'), 'A_B__0_A was not defined should be printed');
     });
 
     describe('if $type was specified', function() {
