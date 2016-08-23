@@ -152,7 +152,7 @@ As you can see, we a replacing `[0]`, with `__0` and thus common-env is complian
 
 Note that **only the first element** of the array will be used as a **description** for every other element of the array. So in the following code:
 
-```
+```js
 const config = env.getOrElseAll({
   mysql: {
     hosts: [{
