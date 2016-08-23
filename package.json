@@ -3,6 +3,8 @@
   "version": "5.4.0",
   "keywords": [
     "environment",
+    "configuration",
+    "process.env",
     "env",
     "var",
     "getenv",
