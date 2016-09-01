@@ -1,9 +1,12 @@
-common-env
-==========
+
+<div align="center">
+  <img src="https://cdn.rawgit.com/egoist/fa2efce43aa2f62e39bbc363bf2240b7/raw/c17a8a5bf5981c32d7b38bbf2dcd88866ef1c8b1/gear.svg" alt="">
+  <br><p><strong>common-env</strong> configuration through <a href="http://blog.honeybadger.io/ruby-guide-environment-variables">environment variables</a> finally done right.</p>
+</div>
+
+=========================================
 
 [![Build Status](https://img.shields.io/circleci/project/FGRibreau/common-env.svg)](https://circleci.com/gh/FGRibreau/common-env/) [![Coverage Status](https://img.shields.io/coveralls/FGRibreau/common-env/master.svg)](https://coveralls.io/github/FGRibreau/common-env?branch=master) [![Deps](	https://img.shields.io/david/FGRibreau/common-env.svg)](https://david-dm.org/FGRibreau/common-env) [![NPM version](https://img.shields.io/npm/v/common-env.svg)](http://badge.fury.io/js/common-env) [![Downloads](http://img.shields.io/npm/dm/common-env.svg)](https://www.npmjs.com/package/common-env) ![extra](https://img.shields.io/badge/actively%20maintained-yes-ff69b4.svg)
-
-A library I use everywhere for configuration. [Environment variables](http://blog.honeybadger.io/ruby-guide-environment-variables/) are a really great way to quickly change a program behavior.
 
 # Philosophy
 
