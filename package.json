@@ -59,6 +59,6 @@
     "updtr": "^0.2.1"
   },
   "dependencies": {
-    "lodash": "^4.15.0"
+    "lodash": "^4.16.5"
   }
 }
