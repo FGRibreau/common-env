@@ -1,3 +1,16 @@
+<a name="6.0.1"></a>
+## 6.0.1 (2016-11-02)
+
+* fix(changelog) ([b774226](https://github.com/FGRibreau/common-env/commit/b774226))
+* node engine: node 7 is now out ([0e90d12](https://github.com/FGRibreau/common-env/commit/0e90d12))
+* Release v6.0.1. ([efe1bcc](https://github.com/FGRibreau/common-env/commit/efe1bcc))
+* Update README.md ([2468e93](https://github.com/FGRibreau/common-env/commit/2468e93))
+* Update README.md ([f944b53](https://github.com/FGRibreau/common-env/commit/f944b53))
+* Update README.md ([e4a103e](https://github.com/FGRibreau/common-env/commit/e4a103e))
+* docs(changelog): updated ([503a484](https://github.com/FGRibreau/common-env/commit/503a484))
+
+
+
 <a name="6.0.0"></a>
 # 6.0.0 (2016-08-23)
 
