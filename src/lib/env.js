@@ -106,6 +106,8 @@ module.exports = function envFactory() {
         .max()
         .value() || 0;
 
+      // we want to at least map all config defined elements
+      // so we choose the greater index between config defined index and the env var defined one
       return Math.max(envMaxIndex, arrayValues.length - 1);
     }
 
