@@ -1,3 +1,18 @@
+<a name="6.1.0"></a>
+# 6.1.0 (2016-11-22)
+
+* Release v6.1.0. ([eeb7e16](https://github.com/FGRibreau/common-env/commit/eeb7e16))
+* feat(package): add "release-after-pr" script ([2977e7a](https://github.com/FGRibreau/common-env/commit/2977e7a))
+* feat(package): add "release-after-pr" script ([e4419c3](https://github.com/FGRibreau/common-env/commit/e4419c3))
+* feat(package): add "release-after-pr" script ([4688f6f](https://github.com/FGRibreau/common-env/commit/4688f6f))
+* feat(package): add "release-after-pr" script ([dc1715b](https://github.com/FGRibreau/common-env/commit/dc1715b))
+* doc(env): add comment ([5ef84ce](https://github.com/FGRibreau/common-env/commit/5ef84ce))
+* fix(env.js): handle rigth object arrays ([46acb83](https://github.com/FGRibreau/common-env/commit/46acb83))
+* chore(package): update nyc to version 9.0.1 ([d5711d4](https://github.com/FGRibreau/common-env/commit/d5711d4))
+* docs(changelog): updated ([ed4f1e5](https://github.com/FGRibreau/common-env/commit/ed4f1e5))
+
+
+
 <a name="6.0.1"></a>
 ## 6.0.1 (2016-11-02)
 
