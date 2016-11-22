@@ -62,7 +62,18 @@ describe('.getOrElseAll', function() {
           ok: {
             heyheyhey: true
           }
-        }
+        },
+        exchanges: [
+          {
+            name: 'exchange.one',
+            type: 'topic',
+            durable: true
+          }, {
+            name: 'exchange.one.dead',
+            type: 'topic',
+            durable: true
+          }
+        ]
       },
 
       a: {
@@ -108,6 +119,17 @@ describe('.getOrElseAll', function() {
     t.strictEqual(config.AMQP.PLOP.ok.heyheyhey, true);
     t.strictEqual(config.AMQP.connect, true);
     t.strictEqual(config.AMQP.connect2, false);
+    t.deepEqual(config.AMQP.exchanges, [
+      {
+        name: 'exchange.one',
+        type: 'topic',
+        durable: true
+      }, {
+        name: 'exchange.one.dead',
+        type: 'topic',
+        durable: true
+      }
+    ]);
 
     t.deepEqual(config.a.b.c.f, ['a', 'c', 'd']);
     t.deepEqual(config.a.b.c.fOverride, 'hello'.split(''));

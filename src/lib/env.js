@@ -91,7 +91,7 @@ module.exports = function envFactory() {
      * @return {[type]}                  [description]
      */
     function getMaxIndex(envKeyNamePrefix, env) {
-      return _.chain(env)
+      var envMaxIndex = _.chain(env)
         .toPairs()
         // only keep keys that are in the format {envKeyNamePrefix}__{NUMBER}[....] (because it can either be an array of array or an array of other objects)
         .filter(([envKey, envVal], k) => {
@@ -105,6 +105,10 @@ module.exports = function envFactory() {
         })
         .max()
         .value() || 0;
+
+      // we want to at least map all config defined elements
+      // so we choose the greater index between config defined index and the env var defined one
+      return Math.max(envMaxIndex, arrayValues.length - 1);
     }
 
     return _.range(0, getMaxIndex(context.fullKeyName, process.env) + 1).map(function(___, index) {
