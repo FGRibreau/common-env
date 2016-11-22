@@ -27,7 +27,8 @@
     "send-coverage": "cat ./coverage/lcov.info | coveralls",
     "check-build": "check-build",
     "update": "updtr",
-    "release-after-pr":"git pull --rebase && npm run test && npm run release-patch && npm run changelog-git",
+    "release-after-pr-patch":"git pull --rebase && npm run test && npm run release-patch && npm run changelog-git",
+    "release-after-pr-minor":"git pull --rebase && npm run test && npm run release-minor && npm run changelog-git",
     "changelog": "conventional-changelog -i CHANGELOG.md -s -r 0",
     "changelog-git": "npm run changelog && git add CHANGELOG.md && git commit -m 'docs(changelog): updated' && git push origin master"
   },
