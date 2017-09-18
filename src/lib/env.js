@@ -2,6 +2,7 @@
 'use strict';
 
 const _ = require('lodash');
+const debug = require('debug')('env');
 
 const types = require('./types');
 const EventEmitter = require('events').EventEmitter;
@@ -180,6 +181,8 @@ module.exports = function envFactory() {
   function getOrElse(fullKeyName, $default, $typeConverter, $secure, context) {
     $secure = typeof($secure) === 'boolean' ? $secure : false;
     $typeConverter = $typeConverter || getTypeConverter($default);
+
+    debug('%s is %s', fullKeyName, process.env[fullKeyName]);    
 
     if (_.has(process.env, fullKeyName)) {
       return emitFound(fullKeyName, $typeConverter(process.env[fullKeyName]), $secure);
