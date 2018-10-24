@@ -1,5 +1,19 @@
+<a name="6.2.0"></a>
+## 6.2.0 (2018-10-24)
+
+* Release v6.2.0. ([e69b923](https://github.com/FGRibreau/common-env/commit/e69b923))
+* Update README.md ([6db97f0](https://github.com/FGRibreau/common-env/commit/6db97f0))
+* Update README.md ([427ed4b](https://github.com/FGRibreau/common-env/commit/427ed4b))
+* Update README.md ([9452b28](https://github.com/FGRibreau/common-env/commit/9452b28))
+* Update README.md ([d31cf64](https://github.com/FGRibreau/common-env/commit/d31cf64))
+* chore(package): update lodash to 4.17.11 ([b24a288](https://github.com/FGRibreau/common-env/commit/b24a288))
+* chore(package): update nyc to version 10.0.0 ([6baad81](https://github.com/FGRibreau/common-env/commit/6baad81))
+* docs(changelog): updated ([e48ba8c](https://github.com/FGRibreau/common-env/commit/e48ba8c))
+
+
+
 <a name="6.1.0"></a>
-# 6.1.0 (2016-11-22)
+## 6.1.0 (2016-11-22)
 
 * Release v6.1.0. ([eeb7e16](https://github.com/FGRibreau/common-env/commit/eeb7e16))
 * feat(package): add "release-after-pr" script ([2977e7a](https://github.com/FGRibreau/common-env/commit/2977e7a))
@@ -14,7 +28,7 @@
 
 
 <a name="6.0.1"></a>
-## 6.0.1 (2016-11-02)
+## <small>6.0.1 (2016-11-02)</small>
 
 * fix(changelog) ([b774226](https://github.com/FGRibreau/common-env/commit/b774226))
 * node engine: node 7 is now out ([0e90d12](https://github.com/FGRibreau/common-env/commit/0e90d12))
@@ -27,7 +41,7 @@
 
 
 <a name="6.0.0"></a>
-# 6.0.0 (2016-08-23)
+## 6.0.0 (2016-08-23)
 
 * chore(dir) ([0455296](https://github.com/FGRibreau/common-env/commit/0455296))
 * docs(changelog) ([ffc13c2](https://github.com/FGRibreau/common-env/commit/ffc13c2))
@@ -51,7 +65,7 @@
 
 
 <a name="5.4.0"></a>
-# 5.4.0 (2016-08-08)
+## 5.4.0 (2016-08-08)
 
 * docs(CHANGELOG) ([06756d9](https://github.com/FGRibreau/common-env/commit/06756d9))
 * Release v5.4.0. ([02da1ac](https://github.com/FGRibreau/common-env/commit/02da1ac))
@@ -60,7 +74,7 @@
 
 
 <a name="5.3.0"></a>
-# 5.3.0 (2016-07-29)
+## 5.3.0 (2016-07-29)
 
 * Add  config option key ([4c89ff6](https://github.com/FGRibreau/common-env/commit/4c89ff6))
 * Release v5.3.0. ([b09d048](https://github.com/FGRibreau/common-env/commit/b09d048))
@@ -69,7 +83,7 @@
 
 
 <a name="5.2.1"></a>
-## 5.2.1 (2016-01-25)
+## <small>5.2.1 (2016-01-25)</small>
 
 * docs(changelog) ([dad0535](https://github.com/FGRibreau/common-env/commit/dad0535))
 * Release v5.2.1. ([63d2ce9](https://github.com/FGRibreau/common-env/commit/63d2ce9))
@@ -82,7 +96,7 @@
 
 
 <a name="5.2.0"></a>
-# 5.2.0 (2015-11-10)
+## 5.2.0 (2015-11-10)
 
 * doc(README) ([f1d68e5](https://github.com/FGRibreau/common-env/commit/f1d68e5))
 * fix($type whithout $aliases) & add tests ([b245c8c](https://github.com/FGRibreau/common-env/commit/b245c8c))
@@ -94,7 +108,7 @@
 
 
 <a name="5.1.0"></a>
-# 5.1.0 (2015-11-04)
+## 5.1.0 (2015-11-04)
 
 * docs(changelog) ([eeb67bf](https://github.com/FGRibreau/common-env/commit/eeb67bf))
 * fix(jshint) ([87d7018](https://github.com/FGRibreau/common-env/commit/87d7018))
@@ -116,7 +130,7 @@
 
 
 <a name="5.0.0"></a>
-# 5.0.0 (2015-08-24)
+## 5.0.0 (2015-08-24)
 
 * docs(changelog) ([c8bf2c3](https://github.com/FGRibreau/common-env/commit/c8bf2c3))
 * Improved documentation on array and array aliases ([698e61b](https://github.com/FGRibreau/common-env/commit/698e61b))
@@ -133,7 +147,7 @@
 
 
 <a name="4.1.0"></a>
-# 4.1.0 (2015-07-02)
+## 4.1.0 (2015-07-02)
 
 * add principle ([d5db983](https://github.com/FGRibreau/common-env/commit/d5db983))
 * Release v4.1.0. ([a782c40](https://github.com/FGRibreau/common-env/commit/a782c40))
@@ -146,7 +160,7 @@
 
 
 <a name="4.0.1"></a>
-## 4.0.1 (2015-05-20)
+## <small>4.0.1 (2015-05-20)</small>
 
 * fix(withLogger) ([6f78b3f](https://github.com/FGRibreau/common-env/commit/6f78b3f))
 * Release v4.0.1. ([3f9b85c](https://github.com/FGRibreau/common-env/commit/3f9b85c))
@@ -155,7 +169,7 @@
 
 
 <a name="4.0.0"></a>
-# 4.0.0 (2015-05-19)
+## 4.0.0 (2015-05-19)
 
 * fix(legacy) ([72a4104](https://github.com/FGRibreau/common-env/commit/72a4104))
 * Release v4.0.0. ([6c457ec](https://github.com/FGRibreau/common-env/commit/6c457ec))
@@ -164,7 +178,7 @@
 
 
 <a name="3.0.1"></a>
-## 3.0.1 (2015-05-19)
+## <small>3.0.1 (2015-05-19)</small>
 
 * fix(lint) ([22f12b0](https://github.com/FGRibreau/common-env/commit/22f12b0))
 * Release v3.0.1. ([67fceaf](https://github.com/FGRibreau/common-env/commit/67fceaf))
@@ -172,7 +186,7 @@
 
 
 <a name="3.0.0"></a>
-# 3.0.0 (2015-05-19)
+## 3.0.0 (2015-05-19)
 
 * docs(changelog) ([809f779](https://github.com/FGRibreau/common-env/commit/809f779))
 * Release v3.0.0. ([7b06d66](https://github.com/FGRibreau/common-env/commit/7b06d66))
@@ -184,7 +198,7 @@
 
 
 <a name="2.2.0"></a>
-# 2.2.0 (2015-05-19)
+## 2.2.0 (2015-05-19)
 
 * docs(changelog) ([ac92842](https://github.com/FGRibreau/common-env/commit/ac92842))
 * docs(readme) ([35757d9](https://github.com/FGRibreau/common-env/commit/35757d9))
@@ -194,14 +208,14 @@
 
 
 <a name="2.1.1"></a>
-## 2.1.1 (2015-05-18)
+## <small>2.1.1 (2015-05-18)</small>
 
 * Release v2.1.1. ([a859d5b](https://github.com/FGRibreau/common-env/commit/a859d5b))
 
 
 
 <a name="2.1.0"></a>
-# 2.1.0 (2015-05-18)
+## 2.1.0 (2015-05-18)
 
 * Release v2.1.0. ([a7d0425](https://github.com/FGRibreau/common-env/commit/a7d0425))
 * feat(aliases): added support for env. var. aliases, fixes #5 ([dc74a02](https://github.com/FGRibreau/common-env/commit/dc74a02)), closes [#5](https://github.com/FGRibreau/common-env/issues/5)
@@ -210,7 +224,7 @@
 
 
 <a name="2.0.0"></a>
-# 2.0.0 (2015-04-22)
+## 2.0.0 (2015-04-22)
 
 * docs(changelog) ([e44f1db](https://github.com/FGRibreau/common-env/commit/e44f1db))
 * Release v2.0.0. ([452b2a6](https://github.com/FGRibreau/common-env/commit/452b2a6))
@@ -218,7 +232,7 @@
 
 
 <a name="1.2.1"></a>
-## 1.2.1 (2015-04-22)
+## <small>1.2.1 (2015-04-22)</small>
 
 * feat(changelog) ([f597b0e](https://github.com/FGRibreau/common-env/commit/f597b0e))
 * feat(ci) ([a2cf4cd](https://github.com/FGRibreau/common-env/commit/a2cf4cd))
@@ -230,7 +244,7 @@
 
 
 <a name="1.2.0"></a>
-# 1.2.0 (2015-03-26)
+## 1.2.0 (2015-03-26)
 
 * fix(lint) ([eae047d](https://github.com/FGRibreau/common-env/commit/eae047d))
 * refactor(common-env) ([ed937e9](https://github.com/FGRibreau/common-env/commit/ed937e9))
@@ -240,7 +254,7 @@
 
 
 <a name="1.1.0"></a>
-# 1.1.0 (2015-01-14)
+## 1.1.0 (2015-01-14)
 
 * . ([fed24cc](https://github.com/FGRibreau/common-env/commit/fed24cc))
 * chore(dotfiles) ([b108da4](https://github.com/FGRibreau/common-env/commit/b108da4))
