@@ -100,7 +100,7 @@ module.exports = function envFactory() {
         })
         // then extract the number from the env key name
         .map(([envKey, envVal], k) => {
-          const matches = envKey.substring(envKeyNamePrefix.length).match(/^__([0-9]+)/)
+          const matches = envKey.substring(envKeyNamePrefix.length).match(/^__([0-9]+)/);
           return parseInt(matches[1], 10);
         })
         .max()
@@ -147,7 +147,7 @@ module.exports = function envFactory() {
       aliasesDeprecationNotice();
     }
 
-    // if `$type` is specified it will be used as a type checker and converter, otherwise infer the type from ``$default`
+    // if `$type` is specified it will be used as a type checker and converter, otherwise infer the type from `$default`
     var $typeConverter = config.$type || getTypeConverter(config.$default);
 
     return config.$aliases.concat([context.fullKeyName]).reduce(function(memo, varEnvName, i, aliases) {

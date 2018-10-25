@@ -1,6 +1,5 @@
 'use strict';
 const util = require('util');
-const _ = require('lodash');
 
 function CommonEnvGetOrDieAliasesException(aliases) {
   this.message = 'At least one environment variable of [{key}] MUST be defined'.replace('{key}', aliases.join(', '));
