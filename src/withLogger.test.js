@@ -57,6 +57,21 @@ describe('withLogger', function() {
         }
       });
     });
-
   });
+
+  it('should handle $secure without $default', function() {
+    process.env = {};
+    process.env.PASSWORD = 'ohMyGodImSoSecret';
+
+    var config = env.getOrElseAll({
+      password: {
+        $secure: true
+      }
+    });
+    t.strictEqual(config.password, process.env.PASSWORD);
+    t.deepEqual(logger.calls, [
+      ["[env] %s was defined, using: %s", "PASSWORD", "***"]
+    ]);
+  });
+
 });

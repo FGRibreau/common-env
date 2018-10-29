@@ -438,7 +438,7 @@ describe('.getOrElseAll', function() {
             a:{
               $type: env.types.Array('plop')
             }
-          })
+          });
         });
       });
     });

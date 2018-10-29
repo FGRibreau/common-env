@@ -100,7 +100,7 @@ module.exports = function envFactory() {
         })
         // then extract the number from the env key name
         .map(([envKey, envVal], k) => {
-          const matches = envKey.substring(envKeyNamePrefix.length).match(/^__([0-9]+)/)
+          const matches = envKey.substring(envKeyNamePrefix.length).match(/^__([0-9]+)/);
           return parseInt(matches[1], 10);
         })
         .max()
@@ -133,8 +133,7 @@ module.exports = function envFactory() {
       throw new Error('$aliases must be an array');
     }
 
-    const aliaseOrSecureIsDefined = !_.isUndefined(config.$aliases) || !_.isUndefined(config.$secure);
-    if (aliaseOrSecureIsDefined && (_.isUndefined(config.$type) && _.isUndefined(config.$default))) {
+    if (!_.isUndefined(config.$aliases) && (_.isUndefined(config.$type) && _.isUndefined(config.$default))) {
       throw new CommonEnvInvalidConfiguration(context.fullKeyName);
     }
 
@@ -147,7 +146,7 @@ module.exports = function envFactory() {
       aliasesDeprecationNotice();
     }
 
-    // if `$type` is specified it will be used as a type checker and converter, otherwise infer the type from ``$default`
+    // if `$type` is specified it will be used as a type checker and converter, otherwise infer the type from `$default`
     var $typeConverter = config.$type || getTypeConverter(config.$default);
 
     return config.$aliases.concat([context.fullKeyName]).reduce(function(memo, varEnvName, i, aliases) {
@@ -159,7 +158,7 @@ module.exports = function envFactory() {
 
       // only try to get an env var if memo is undefined
       if (isLast) {
-        return _.isUndefined(config.$default) ? getOrDieWithAliases(varEnvName, $typeConverter, aliases) : getOrElse(varEnvName, config.$default, $typeConverter, config.$secure);
+        return _.isUndefined(config.$default) ? getOrDieWithAliases(varEnvName, $typeConverter, aliases, config.$secure) : getOrElse(varEnvName, config.$default, $typeConverter, config.$secure);
       }
 
       return getOrElse(varEnvName, null, $typeConverter, config.$secure);
@@ -189,8 +188,8 @@ module.exports = function envFactory() {
   }
 
   function getOrDieFactory(f) {
-    return function(fullKeyName, $typeConverter /* args */ ) {
-      var value = getOrElse(fullKeyName, null, $typeConverter);
+    return function(fullKeyName, $typeConverter, aliases, $secure) {
+      var value = getOrElse(fullKeyName, null, $typeConverter, $secure);
 
       if (value === null) {
         f.apply(null, arguments);
@@ -248,7 +247,7 @@ function isArrayOfAtom(array) {
 }
 
 function isConfigurationObject(value) {
-  return _.isObject(value) && (_.has(value, '$default') || _.has(value, '$aliases') || _.has(value, '$type'));
+  return _.isObject(value) && (_.has(value, '$default') || _.has(value, '$aliases') || _.has(value, '$type') || _.has(value, '$secure'));
 }
 
 /**

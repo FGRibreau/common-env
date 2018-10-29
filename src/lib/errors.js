@@ -1,6 +1,5 @@
 'use strict';
 const util = require('util');
-const _ = require('lodash');
 
 function CommonEnvGetOrDieAliasesException(aliases) {
   this.message = 'At least one environment variable of [{key}] MUST be defined'.replace('{key}', aliases.join(', '));
@@ -23,7 +22,7 @@ function CommonEnvRootConfigurationObjectException(object, prefix) {
 util.inherits(CommonEnvRootConfigurationObjectException, Error);
 
 function CommonEnvInvalidConfiguration(key) {
-  this.message = 'Invalid configuration, `$aliases` or `$secure` must be defined along side $default or $type in key "{key}"'.replace('{key}', key);
+  this.message = 'Invalid configuration, `$aliases` must be defined along side $default or $type in key "{key}"'.replace('{key}', key);
   this.name = 'CommonEnvInvalidConfiguration';
 }
 util.inherits(CommonEnvInvalidConfiguration, Error);
