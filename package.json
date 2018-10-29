@@ -61,6 +61,7 @@
     "updtr": "^0.2.1"
   },
   "dependencies": {
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.11",
+    "npm-release": "^1.0.0"
   }
 }
