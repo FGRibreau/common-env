@@ -1,3 +1,14 @@
+<a name="6.3.0"></a>
+## 6.3.0 (2018-10-29)
+
+* Release v6.3.0. ([4336b74](https://github.com/FGRibreau/common-env/commit/4336b74))
+* fix: add npm-release ([619ec99](https://github.com/FGRibreau/common-env/commit/619ec99))
+* fix(env): make $secure work without $default ([465890f](https://github.com/FGRibreau/common-env/commit/465890f)), closes [#27](https://github.com/FGRibreau/common-env/issues/27)
+* chore(package): fix some typos & jshint warnings ([c4f0b76](https://github.com/FGRibreau/common-env/commit/c4f0b76))
+* docs(changelog): updated ([1e081ae](https://github.com/FGRibreau/common-env/commit/1e081ae))
+
+
+
 <a name="6.2.0"></a>
 ## 6.2.0 (2018-10-24)
 
