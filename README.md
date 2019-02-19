@@ -161,7 +161,7 @@ const config = env.getOrElseAll({
       port: 3306
       }, {
       auth: {
-        $type: env.types.String
+        $type: env.types.String,
         $secure: true
       }
     }]
