@@ -55,7 +55,7 @@
     "chai": "^3.5.0",
     "check-build": "^2.8.2",
     "coveralls": "^2.11.12",
-    "conventional-changelog-cli": "^1.2.0",
+    "conventional-changelog-cli": "^2.0.31",
     "mocha": "^3.0.2",
     "nyc": "^10.0.0",
     "updtr": "^0.2.1"
