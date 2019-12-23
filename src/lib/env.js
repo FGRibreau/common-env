@@ -40,14 +40,6 @@ module.exports = function envFactory() {
     return newContext;
   }
 
-  function aliasesDeprecationNotice() {
-    if (aliasesDeprecationNotice.called) {
-      return;
-    }
-    console.warn('$aliases is deprecated and will be removed in common-env v7. More info at http://bit.ly/2bRSMN3');
-    aliasesDeprecationNotice.called = true;
-  }
-
   function getOrElseAll(object, topContext) {
     topContext = topContext || createContext();
 
@@ -142,8 +134,6 @@ module.exports = function envFactory() {
     }
     if (_.isUndefined(config.$aliases)) {
       config.$aliases = [];
-    } else {
-      aliasesDeprecationNotice();
     }
 
     // if `$type` is specified it will be used as a type checker and converter, otherwise infer the type from `$default`

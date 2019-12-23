@@ -4,7 +4,7 @@
   <br><p><strong>common-env</strong> configuration through <a href="http://blog.honeybadger.io/ruby-guide-environment-variables">environment variables</a> finally done right.</p>
 </div>
 
-[![Build Status](https://img.shields.io/circleci/project/github/FGRibreau/common-env.svg)](https://circleci.com/gh/FGRibreau/common-env/) [![Coverage Status](https://img.shields.io/coveralls/FGRibreau/common-env/master.svg)](https://coveralls.io/github/FGRibreau/common-env?branch=master) [![Deps](	https://img.shields.io/david/FGRibreau/common-env.svg)](https://david-dm.org/FGRibreau/common-env) [![NPM version](https://img.shields.io/npm/v/common-env.svg)](http://badge.fury.io/js/common-env) [![Downloads](http://img.shields.io/npm/dm/common-env.svg)](https://www.npmjs.com/package/common-env) 
+[![Build Status](https://img.shields.io/circleci/project/github/FGRibreau/common-env.svg)](https://circleci.com/gh/FGRibreau/common-env/) [![Coverage Status](https://img.shields.io/coveralls/FGRibreau/common-env/master.svg)](https://coveralls.io/github/FGRibreau/common-env?branch=master) [![Deps](	https://img.shields.io/david/FGRibreau/common-env.svg)](https://david-dm.org/FGRibreau/common-env) [![NPM version](https://img.shields.io/npm/v/common-env.svg)](http://badge.fury.io/js/common-env) [![Downloads](http://img.shields.io/npm/dm/common-env.svg)](https://www.npmjs.com/package/common-env)
 
 [![Get help on Codementor](https://cdn.codementor.io/badges/get_help_github.svg)](https://www.codementor.io/francois-guillaume-ribreau?utm_source=github&utm_medium=button&utm_term=francois-guillaume-ribreau&utm_campaign=github) [![available-for-advisory](https://img.shields.io/badge/available%20for%20consulting%20advisory-yes-ff69b4.svg?)](http://bit.ly/2c7uFJq) ![extra](https://img.shields.io/badge/actively%20maintained-yes-ff69b4.svg)
 
@@ -209,8 +209,6 @@ $ AMQP_HOSTS='88.23.21.21,88.23.21.22,88.23.21.23' node test.js
 
 #### How to specify environment variable arrays using $aliases
 
-**Deprecated** aliases breaks common-env philosophy by allowing a developer to specify environment variables that matches outside constraints (like a company convention). Since a software internal configuration should not depends on external factors, this feature is now deprecated.
-
 ```javascript
 // test.js
 var env = require('common-env')();
@@ -237,7 +235,7 @@ $ LOCAL_RABBITMQ_HOSTS='88.23.21.21,88.23.21.22,88.23.21.23' node test.js
 ['88.23.21.21', '88.23.21.22', '88.23.21.23']
 ```
 
-Aliases don't supports arrays in their names and never will. **$aliases is deprecated**, please use common-env classical form.
+Aliases don't supports arrays in their names and never will.
 
 
 ##### fail-fast behaviour
