@@ -57,11 +57,11 @@
     "coveralls": "^2.11.12",
     "conventional-changelog-cli": "^1.2.0",
     "mocha": "^3.0.2",
+    "npm-release": "^1.0.0",
     "nyc": "^10.0.0",
     "updtr": "^0.2.1"
   },
   "dependencies": {
-    "lodash": "^4.17.11",
-    "npm-release": "^1.0.0"
+    "lodash": "^4.17.11"
   }
 }
