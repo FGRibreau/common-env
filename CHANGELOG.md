@@ -1,3 +1,23 @@
+<a name="6.4.0"></a>
+## 6.4.0 (2020-06-02)
+
+* Move npm-release to devDependencies ([d3ca654](https://github.com/FGRibreau/common-env/commit/d3ca654))
+* Release v6.4.0. ([4abfa61](https://github.com/FGRibreau/common-env/commit/4abfa61))
+
+
+
+<a name="6.3.1"></a>
+## <small>6.3.1 (2019-12-23)</small>
+
+* Release v6.3.1. ([4e95361](https://github.com/FGRibreau/common-env/commit/4e95361))
+* Update README.md ([b2cb85e](https://github.com/FGRibreau/common-env/commit/b2cb85e))
+* fix: remove deprecation ([0c22f7d](https://github.com/FGRibreau/common-env/commit/0c22f7d))
+* chore(deps): [security] bump lodash from 4.17.11 to 4.17.13 ([fa70b1b](https://github.com/FGRibreau/common-env/commit/fa70b1b))
+* chore(deps): [security] bump lodash.template from 4.4.0 to 4.5.0 ([bc83b1f](https://github.com/FGRibreau/common-env/commit/bc83b1f))
+* docs(changelog): updated ([84c7a1d](https://github.com/FGRibreau/common-env/commit/84c7a1d))
+
+
+
 <a name="6.3.0"></a>
 ## 6.3.0 (2018-10-29)
 
@@ -269,11 +289,11 @@
 
 * . ([fed24cc](https://github.com/FGRibreau/common-env/commit/fed24cc))
 * chore(dotfiles) ([b108da4](https://github.com/FGRibreau/common-env/commit/b108da4))
-* chore(package) ([8165b03](https://github.com/FGRibreau/common-env/commit/8165b03))
 * chore(package) ([6def133](https://github.com/FGRibreau/common-env/commit/6def133))
-* docs(readme) ([a8bd0cc](https://github.com/FGRibreau/common-env/commit/a8bd0cc))
+* chore(package) ([8165b03](https://github.com/FGRibreau/common-env/commit/8165b03))
 * docs(readme) ([f1d425c](https://github.com/FGRibreau/common-env/commit/f1d425c))
 * docs(readme) ([6fd95ae](https://github.com/FGRibreau/common-env/commit/6fd95ae))
+* docs(readme) ([a8bd0cc](https://github.com/FGRibreau/common-env/commit/a8bd0cc))
 * docs(readme); ([4558fdd](https://github.com/FGRibreau/common-env/commit/4558fdd))
 * docs(readme): ([45aa9e8](https://github.com/FGRibreau/common-env/commit/45aa9e8))
 * docs(readme): ([3c013a0](https://github.com/FGRibreau/common-env/commit/3c013a0))
