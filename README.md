@@ -14,8 +14,6 @@ Here is my principle:
 
 [![uslide_52](https://cloud.githubusercontent.com/assets/138050/8478738/8eba09f0-20d3-11e5-9fa7-43d952bacb99.png)](https://www.uslide.io/presentations/Aw6sX5ug-Tfzw5rNXAmdJg)
 
-[See the talk (in french) about the why [15:23-21:30]](https://www.uslide.io/presentations/Aw6sX5ug-Tfzw5rNXAmdJg)
-
 \* besides i18n translation key and things like that of course (well, now that we've got symbols in ES6...)
 
 # NPM
